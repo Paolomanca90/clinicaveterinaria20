@@ -1,0 +1,105 @@
+﻿@model IEnumerable<clinicaveterinaria20.Models.Animale>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-responsive-xl">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.dataRegistrazione)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.coloreMantello)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dataDinascita)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.microchip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nmicrochip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomeProprietario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cognomeProprietario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datainizioricovero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datafinericovero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codicefiscale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.foto)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.dataRegistrazione)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.coloreMantello)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dataDinascita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.microchip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nmicrochip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomeProprietario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cognomeProprietario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.datainizioricovero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.datafinericovero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.codicefiscale)
+            </td>
+            <td>
+                <img src="~/Content/img/uploads/@item.foto">
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idanimale }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idanimale })
+            </td>
+        </tr>
+    }
+
+</table>

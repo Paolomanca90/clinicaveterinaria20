@@ -1,0 +1,129 @@
+﻿@model clinicaveterinaria20.Models.Animale
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Sei sicuro di voler rimuovere questa anagrafica?</h3>
+<div>
+    <h4>Animale</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dataRegistrazione)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dataRegistrazione)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.coloreMantello)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.coloreMantello)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dataDinascita)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dataDinascita)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.microchip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.microchip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nmicrochip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nmicrochip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nomeProprietario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomeProprietario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cognomeProprietario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cognomeProprietario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datainizioricovero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datainizioricovero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datafinericovero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datafinericovero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codicefiscale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codicefiscale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.foto)
+        </dt>
+
+        <dd>
+            <img src="~/Content/img/uploads/@Model.foto">
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

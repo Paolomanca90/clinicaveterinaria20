@@ -18,19 +18,26 @@ namespace clinicaveterinaria20.Models
         [Key]
         public int idanimale { get; set; }
 
-        public DateTime? dataRegistrazione { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? dataRegistrazione { get; set; } = DateTime.Now;
 
+        [Required(ErrorMessage = "Campo obbligatorio")]
         [StringLength(20)]
         public string nome { get; set; }
 
+        [Required(ErrorMessage = "Campo obbligatorio")]
         [StringLength(20)]
         public string tipo { get; set; }
 
+        [Required(ErrorMessage = "Campo obbligatorio")]
         [StringLength(20)]
         public string coloreMantello { get; set; }
 
+        [Required(ErrorMessage = "Campo obbligatorio")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? dataDinascita { get; set; }
 
+        [Required(ErrorMessage = "Campo obbligatorio")]
         public bool? microchip { get; set; }
 
         [StringLength(50)]
@@ -53,5 +60,6 @@ namespace clinicaveterinaria20.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Visita> Visita { get; set; }
+
     }
 }

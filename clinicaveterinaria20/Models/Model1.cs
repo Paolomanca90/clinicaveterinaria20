@@ -11,8 +11,6 @@ namespace clinicaveterinaria20.Models
             : base("name=Model1")
         {
         }
-
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<Animale> Animale { get; set; }
         public virtual DbSet<Armadietti> Armadietti { get; set; }
         public virtual DbSet<Brand> Brand { get; set; }

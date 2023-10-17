@@ -1,0 +1,57 @@
+﻿@model clinicaveterinaria20.Models.Visita
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Sei sicuro di voler rimuovere i dati di questa visita?</h3>
+<div>
+    <h4>Visita</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Animale.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Animale.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datavisita)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datavisita)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esame)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esame)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cura)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
