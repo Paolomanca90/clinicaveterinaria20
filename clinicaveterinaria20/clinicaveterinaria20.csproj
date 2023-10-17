@@ -176,6 +176,7 @@
     <Compile Include="Models\C__MigrationHistory.cs" />
     <Compile Include="Models\Model1.cs" />
     <Compile Include="Models\Prodotti.cs" />
+    <Compile Include="Models\SiteRole.cs" />
     <Compile Include="Models\Utente.cs" />
     <Compile Include="Models\Utilizzi.cs" />
     <Compile Include="Models\Vendita.cs" />
