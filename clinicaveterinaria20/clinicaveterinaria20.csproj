@@ -214,6 +214,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\img\uploads\placeholder.jpg" />
+    <Content Include="Content\nav.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -273,11 +275,12 @@
     <Content Include="Views\Appointment\Delete.cshtml" />
     <Content Include="Views\Appointment\Index.cshtml" />
     <Content Include="Views\Animal\Index.cshtml" />
+    <Content Include="Views\Animal\MedicalHistory.cshtml" />
+    <Content Include="Views\Animal\SearchByMNumber.cshtml" />
     <Content Include="Views\magazzino\aggiungiArmadio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\img\uploads\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>

@@ -83,5 +83,6 @@ namespace clinicaveterinaria20.Controllers
             TempData["Success"] = "Dati visita rimossi con successo";
             return RedirectToAction("Index");
         }
+
     }
 }
