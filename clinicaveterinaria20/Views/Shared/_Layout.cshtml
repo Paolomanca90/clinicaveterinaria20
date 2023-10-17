@@ -1,12 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title - Applicazione ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/nav.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -27,6 +28,19 @@
             </div>
         </div>
     </nav>
+    <div class="bars" id="nav-action">
+        <span class="bar"> </span>
+    </div>
+    <nav id="nav">
+        <ul>
+            <li class="shape-circle circle-one"><a href="#">Contact</a></li>
+            <li class="shape-circle circle-two"><a href="#">Blog</a></li>
+            <li class="shape-circle circle-three"><a href="#">Work</a></li>
+            <li class="shape-circle circle-five">
+                <a href="#">Home</a>
+            </li>
+        </ul>
+    </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -37,6 +51,17 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script>
+        var bars = document.getElementById("nav-action");
+        var nav = document.getElementById("nav");
+
+        bars.addEventListener("click", barClicked, false);
+
+        function barClicked() {
+            bars.classList.toggle('active');
+            nav.classList.toggle('visible');
+        }
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
