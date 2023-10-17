@@ -71,14 +71,8 @@ namespace clinicaveterinaria20.Controllers
         }
 
         [HttpPost]
-        public ActionResult inserisciprodottoinmagazino(Prodotti p, HttpPostedFile foto)
+        public ActionResult inserisciprodottoinmagazino(Prodotti p, HttpPostedFileBase foto)
         {
-            if (foto != null && foto.ContentLength > 0)
-            {
-                p.foto = foto.FileName;
-                string path = Server.MapPath("~/Content/img/") + foto.FileName;
-                foto.SaveAs(path);
-            }
             Prodotti prodotto = database.Prodotti.FirstOrDefault((a) => a.nome == p.nome);
             if (prodotto == null)
             {
@@ -92,9 +86,16 @@ namespace clinicaveterinaria20.Controllers
                         if (pr == null)
                         {
                             Brand brand12 = database.Brand.FirstOrDefault(b => b.nome == p.Brand.nome);
-                            if (brand12 == null)
+                            if (brand12 != null)
                             {
+                                Brand brand = database.Brand.FirstOrDefault(b => b.nome == p.Brand.nome);
+                                p.idcassetto = cassetto.idcassetto;
+                                p.idbrand = brand12.idbrand;
+                                p.foto = "a";
+
                                 database.Prodotti.Add(p);
+
+                                database.SaveChanges();
                             }
                             else { ViewBag.errore = "brand non registrato"; }
                         }
