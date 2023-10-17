@@ -176,6 +176,10 @@
     <Compile Include="Migrations\202310170857113_InitMigration.designer.cs">
       <DependentUpon>202310170857113_InitMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310171558202_ok.cs" />
+    <Compile Include="Migrations\202310171558202_ok.designer.cs">
+      <DependentUpon>202310171558202_ok.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Animale.cs" />
     <Compile Include="Models\Armadietti.cs" />
@@ -183,6 +187,7 @@
     <Compile Include="Models\Cassetto.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\ModelloProdotto.cs" />
     <Compile Include="Models\Prodotti.cs" />
     <Compile Include="Models\SiteRole.cs" />
     <Compile Include="Models\Utente.cs" />
@@ -237,6 +242,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -267,6 +273,7 @@
     <Content Include="Views\Appointment\Delete.cshtml" />
     <Content Include="Views\Appointment\Index.cshtml" />
     <Content Include="Views\Animal\Index.cshtml" />
+    <Content Include="Views\magazzino\aggiungiArmadio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -347,6 +354,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202310170857113_InitMigration.resx">
       <DependentUpon>202310170857113_InitMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310171558202_ok.resx">
+      <DependentUpon>202310171558202_ok.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
