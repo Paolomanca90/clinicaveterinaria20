@@ -71,13 +71,13 @@ namespace clinicaveterinaria20.Controllers
         }
 
         [HttpPost]
-        public ActionResult inserisciprodottoinmagazino(Prodotti p, HttpPostedFile brand)
+        public ActionResult inserisciprodottoinmagazino(Prodotti p, HttpPostedFile foto)
         {
-            if (brand != null && brand.ContentLength > 0)
+            if (foto != null && foto.ContentLength > 0)
             {
-                p.foto = brand.FileName;
-                string path = Server.MapPath("~/Content/img/") + brand.FileName;
-                brand.SaveAs(path);
+                p.foto = foto.FileName;
+                string path = Server.MapPath("~/Content/img/") + foto.FileName;
+                foto.SaveAs(path);
             }
             Prodotti prodotto = database.Prodotti.FirstOrDefault((a) => a.nome == p.nome);
             if (prodotto == null)

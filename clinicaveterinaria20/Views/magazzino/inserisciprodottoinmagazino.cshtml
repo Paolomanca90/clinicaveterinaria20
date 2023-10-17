@@ -6,7 +6,7 @@
 
 <h2>inserisciprodottoinmagazino</h2>
 
-@using (Html.BeginForm("inserisciprodottoinmagazino", "magazzino", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("inserisciprodottoinmagazino", "magazzino", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -29,15 +29,12 @@
                 @Html.ValidationMessageFor(model => model.tipologia, "", new { @class = "text-danger" })
             </div>
         </div>
+
         <div class="form-group">
-            @Html.LabelFor(model => model.foto, htmlAttributes: new { @class = "control-label" })
-            <input type="file" name="brand" id="brand" class="form-control" />
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Cassetto.Armadietti, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.foto, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Cassetto.Armadietti, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Cassetto.Armadietti, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.foto, new { @class = "form-control", type = "file", @accept = "image/*" })
+                @Html.ValidationMessageFor(model => model.foto, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -46,6 +43,13 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.quantita, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.quantita, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cassetto.Armadietti.codice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Cassetto.Armadietti.codice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cassetto.Armadietti.codice, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -92,3 +96,7 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
