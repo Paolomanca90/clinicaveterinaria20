@@ -13,6 +13,7 @@ namespace clinicaveterinaria20.Controllers
     {
         // GET: Vendite
         private Model1 db = new Model1();
+
         public List<SelectListItem> ListaProdotti
         {
             get
@@ -28,43 +29,49 @@ namespace clinicaveterinaria20.Controllers
                 return list;
             }
         }
+
         public ActionResult Index()
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index(Cliente cliente)
         {
-            Cliente comp = db.Cliente.FirstOrDefault(m => m.codicefiscale == cliente.codicefiscale);
-            if (comp == null)
+            if (ModelState.IsValid)
             {
-                db.Cliente.Add(cliente);
-                db.SaveChanges();
-            }
-            List<Cliente> lista = new List<Cliente>();
-            lista = db.Cliente.ToList();
-            foreach (Cliente c in lista)
-            {
-                if (c.codicefiscale == cliente.codicefiscale)
+                Cliente comp = db.Cliente.FirstOrDefault(m => m.codicefiscale == cliente.codicefiscale);
+                if (comp == null)
                 {
-                    Session["idCliente"] = c.idcliente;
+                    db.Cliente.Add(cliente);
+                    db.SaveChanges();
                 }
+                List<Cliente> lista = new List<Cliente>();
+                lista = db.Cliente.ToList();
+                foreach (Cliente c in lista)
+                {
+                    if (c.codicefiscale == cliente.codicefiscale)
+                    {
+                        Session["idCliente"] = c.idcliente;
+                    }
+                }    
+                return RedirectToAction("Create");
             }
-            return RedirectToAction("Create");
+            else { return View(); }
+        
         }
+
         public ActionResult Create()
         {
             ViewBag.Prodotti = ListaProdotti;
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Vendita vd)
         {
-
-
-
             vd.datavendita = DateTime.Now;
             var prodotto = db.Prodotti.Find(vd.idprodotto);
             vd.costotot = vd.quantita * prodotto.costo;
@@ -73,29 +80,30 @@ namespace clinicaveterinaria20.Controllers
             db.SaveChanges();
             return RedirectToAction("Create");
         }
-        public ActionResult venditeCF ()
-        {
 
+        public ActionResult venditeCF()
+        {
             return View();
         }
+
         [HttpPost]
         public JsonResult jsnVenditeCF(string cf)
         {
-            
-            List<Vendita> json =db.Vendita.Where(m=>m.Cliente.codicefiscale == cf).ToList();
+            List<Vendita> json = db.Vendita.Where(m => m.Cliente.codicefiscale == cf).ToList();
             VetrinaPH vetrina = new VetrinaPH();
             List<VetrinaPH> lista = new List<VetrinaPH>();
-            foreach(Vendita vendita in json)
+            foreach (Vendita vendita in json)
             {
                 vetrina.datavendita = vendita.datavendita;
                 vetrina.idvendita = vendita.idvendita;
-                vetrina.nricetta = vendita.nricetta;    
+                vetrina.nricetta = vendita.nricetta;
                 vetrina.quantita = vendita.quantita;
                 vetrina.costotot = vendita.costotot;
                 lista.Add(vetrina);
             }
             return Json(lista);
         }
+
         public JsonResult jsnVenditeData(string pippo)
         {
             DateTime dat = Convert.ToDateTime(pippo);
