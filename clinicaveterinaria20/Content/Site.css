@@ -62,3 +62,77 @@ body, p, h1, h2, h3, h4, h5, span, a, button, div, input, label {
 .quantity{width:60px}
 .control-label{font-size:1.4rem}
 /* Set width on the form input elements since they're 100% wide by default */
+
+.venditeCF{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    text-align: center;
+    align-items: center;
+    
+}
+#cf {
+    margin-bottom: 3%;
+    box-shadow: 5px 2px 6px 0px rgba(255,255,255,0.43);
+    width: 36%;
+    text-align: center;
+    border-color: #1e90ff;
+    border-radius: 20px;
+    font-size: 20px;
+    color: #1e90ff;
+    padding: 0.3em;
+}
+#btn1 {
+    margin-bottom: 5%;
+    cursor: pointer;
+    width: 20%;
+    background-color: white;
+    color: #1e90ff;
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+    padding: 0.3em;
+}
+    #btn1:hover {
+        background-color: #1e90ff;
+        color:white;
+    }
+#input-data {
+    margin-bottom: 3%;
+    box-shadow: 5px 2px 6px 0px rgba(255,255,255,0.43);
+    width: 36%;
+    text-align: center;
+    border-color: #1e90ff;
+    border-radius: 20px;
+    font-size: 20px;
+    color: #1e90ff;
+    padding: 0.3em;
+}
+#btn2 {
+    cursor: pointer;
+    margin-bottom: 5%;
+    width: 20%;
+    background-color: white;
+    color: #1e90ff;
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+    padding: 0.3em;
+}
+#btn2:hover {
+    background-color: #1e90ff;
+    color: white;
+}
+.accadue {
+    margin-bottom: 5%;
+    color: white;
+    text-shadow: -1px 0 #141161, 0 1px #141161, 1px 0 #141161, 0 -1px #141161;
+}
+.bovendite {
+    /*background: rgb(0,47,78);
+    background: linear-gradient(90deg, rgba(0,47,78,1) 0%, rgba(15,105,213,1) 21%, rgba(255,255,255,1) 100%);*/
+    /*background: rgb(0,47,78);
+    background: linear-gradient(90deg, rgba(0,47,78,1) 0%, rgba(13,74,147,1) 0%, rgba(255,255,255,1) 100%);*/
+    background: rgb(157,200,255);
+    background: linear-gradient(90deg, rgba(157,200,255,1) 55%, rgba(255,255,255,1) 100%);
+}
