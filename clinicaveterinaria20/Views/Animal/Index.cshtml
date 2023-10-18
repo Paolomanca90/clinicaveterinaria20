@@ -4,12 +4,44 @@
     ViewBag.Title = "Index";
 }
 
+@section styles{
+    <link href="~/Content/listaAnimali.css" rel="stylesheet" />
+    }
+
 <h2>Index</h2>
 
-<p>
+<p class="text-end">
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table table-responsive-xl">
+
+
+    <div class="container color1">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="colunm-3">
+                    <div class="approach-wrapper">
+                        <div class="aprroach-card">
+                            <div>
+                                <h3>
+                                    @item.nome
+                                </h3>
+                                <p>
+                                    Tipo: @item.tipo, Colore: @item.coloreMantello
+                                </p>
+                                @Html.ActionLink("Modifica", "Edit", new { id = item.idanimale, @class = "btn apprach-btn" })
+                                @Html.ActionLink("Anamnesi", "MedicalHistory", new { id = item.idanimale, @class = "btn apprach-btn" })
+                                @Html.ActionLink("Cancella", "Delete", new { id = item.idanimale, @class = "btn apprach-btn" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    
+
+@*<table class="table table-responsive-xl">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.dataRegistrazione)
@@ -103,4 +135,4 @@
         </tr>
     }
 
-</table>
+</table>*@

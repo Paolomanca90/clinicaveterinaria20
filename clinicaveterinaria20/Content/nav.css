@@ -160,18 +160,18 @@ nav.visible li:last-child {
 }
 
 nav.visible li:first-child a {
-    line-height: 132.5vw !important;
-    text-indent: 7.5vw !important;
+    line-height: 77vw !important;
+    text-indent: 3.5vw !important;
 }
 
 nav.visible li:nth-child(2) a {
-    line-height: 100vw !important;
-    text-indent: 8.5vw !important;
+    line-height: 60vw !important;
+    text-indent: 4.25vw !important;
 }
 
 nav.visible li:nth-child(3) a {
-    line-height: 68.5vw !important;
-    text-indent: 8.5vw !important;
+    line-height: 43vw !important;
+    text-indent: 4.25vw !important;
 }
 
 nav.visible li:last-child a {
