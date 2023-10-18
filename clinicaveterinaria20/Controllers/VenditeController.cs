@@ -20,10 +20,10 @@ namespace clinicaveterinaria20.Controllers
             {
                 List<SelectListItem> list = new List<SelectListItem>();
                 List<Prodotti> lista = new List<Prodotti>();
-                lista = db.Prodotti.ToList();
+                lista = db.Prodotti.Where((a) => a.quantita > 0).ToList();
                 foreach (Prodotti p in lista)
                 {
-                    SelectListItem item = new SelectListItem { Text = $"{p.nome} - {p.costo:C}", Value = $"{p.idprodotto}" };
+                    SelectListItem item = new SelectListItem { Text = $"{p.quantita} pz - {p.nome} - {p.costo:C}", Value = $"{p.idprodotto}" };
                     list.Add(item);
                 }
                 return list;
@@ -55,29 +55,56 @@ namespace clinicaveterinaria20.Controllers
                     {
                         Session["idCliente"] = c.idcliente;
                     }
-                }    
-                return RedirectToAction("Create");
+                }
+                if (Session["idCliente"] != null)
+                {
+                    return RedirectToAction("Create");
+                }
+                return View();
             }
             else { return View(); }
-        
         }
 
         public ActionResult Create()
         {
-            ViewBag.Prodotti = ListaProdotti;
-            return View();
+            if (Session["idCliente"] != null)
+            {
+                ViewBag.Prodotti = ListaProdotti;
+                return View();
+            }
+
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Vendita vd)
         {
+            Model1 database = new Model1();
+            if (vd.quantita == 0 || vd.quantita == null)
+            {
+                vd.quantita = 1;
+            }
             vd.datavendita = DateTime.Now;
-            var prodotto = db.Prodotti.Find(vd.idprodotto);
-            vd.costotot = vd.quantita * prodotto.costo;
-            vd.idcliente = (int)Session["idCliente"];
-            db.Vendita.Add(vd);
-            db.SaveChanges();
+            Prodotti prodotto = database.Prodotti.Find(vd.idprodotto);
+            if (prodotto.quantita < vd.quantita)
+            {
+                ViewBag.errore = "attualmente non è presente il numero di articoli richiesti sono presenti " + prodotto.quantita;
+                ViewBag.Prodotti = ListaProdotti;
+                return View();
+            }
+            else
+            {
+                vd.costotot = vd.quantita * prodotto.costo;
+                vd.idcliente = (int)Session["idCliente"];
+                database.Vendita.Add(vd);
+
+                Prodotti prodotti1 = database.Prodotti.Find(vd.idprodotto);
+                prodotti1.quantita -= vd.quantita;
+                database.Entry(prodotti1).State = EntityState.Modified;
+                database.SaveChanges();
+            }
+
             return RedirectToAction("Create");
         }
 
@@ -89,36 +116,58 @@ namespace clinicaveterinaria20.Controllers
         [HttpPost]
         public JsonResult jsnVenditeCF(string cf)
         {
-            List<Vendita> json = db.Vendita.Where(m => m.Cliente.codicefiscale == cf).ToList();
-            VetrinaPH vetrina = new VetrinaPH();
             List<VetrinaPH> lista = new List<VetrinaPH>();
-            foreach (Vendita vendita in json)
+
+            List<Vendita> json = db.Vendita.Where(m => m.Cliente.codicefiscale == cf).ToList();
+            if (json.Count > 0)
             {
-                vetrina.datavendita = vendita.datavendita;
-                vetrina.idvendita = vendita.idvendita;
-                vetrina.nricetta = vendita.nricetta;
-                vetrina.quantita = vendita.quantita;
-                vetrina.costotot = vendita.costotot;
-                lista.Add(vetrina);
+                VetrinaPH vetrina = new VetrinaPH();
+
+                foreach (Vendita vendita in json)
+                {
+                    vetrina.datavendita = vendita.datavendita;
+                    vetrina.idvendita = vendita.idvendita;
+                    vetrina.nricetta = vendita.nricetta;
+                    vetrina.quantita = vendita.quantita;
+                    vetrina.costotot = vendita.costotot;
+
+                    lista.Add(vetrina);
+                }
+                return Json(lista);
             }
+            VetrinaPH vetrina1 = new VetrinaPH();
+            vetrina1.idcliente = -1;
+            lista.Add(vetrina1);
             return Json(lista);
         }
 
         public JsonResult jsnVenditeData(string pippo)
         {
-            DateTime dat = Convert.ToDateTime(pippo);
-            List<Vendita> json = db.Vendita.Where(m => m.datavendita == dat).ToList();
-            VetrinaPH vetrina = new VetrinaPH();
             List<VetrinaPH> lista = new List<VetrinaPH>();
-            foreach (Vendita vendita in json)
+            if (pippo == "")
             {
-                vetrina.datavendita = vendita.datavendita;
-                vetrina.idvendita = vendita.idvendita;
-                vetrina.nricetta = vendita.nricetta;
-                vetrina.quantita = vendita.quantita;
-                vetrina.costotot = vendita.costotot;
-                lista.Add(vetrina);
+                DateTime dat = Convert.ToDateTime(pippo);
+
+                List<Vendita> json = db.Vendita.Where(m => m.datavendita == dat).ToList();
+                if (json.Count > 0)
+                {
+                    VetrinaPH vetrina = new VetrinaPH();
+
+                    foreach (Vendita vendita in json)
+                    {
+                        vetrina.datavendita = vendita.datavendita;
+                        vetrina.idvendita = vendita.idvendita;
+                        vetrina.nricetta = vendita.nricetta;
+                        vetrina.quantita = vendita.quantita;
+                        vetrina.costotot = vendita.costotot;
+                        lista.Add(vetrina);
+                    }
+                    return Json(lista);
+                }
             }
+            VetrinaPH vetrina1 = new VetrinaPH();
+            vetrina1.idcliente = -1;
+            lista.Add(vetrina1);
             return Json(lista);
         }
     }

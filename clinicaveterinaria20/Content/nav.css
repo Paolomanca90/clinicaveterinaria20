@@ -41,13 +41,13 @@ body {
     position: absolute;
 }
 
-.bar::before {
-    transform: translateY(-9px);
-}
+    .bar::before {
+        transform: translateY(-9px);
+    }
 
-.bar::after {
-    transform: translateY(9px);
-}
+    .bar::after {
+        transform: translateY(9px);
+    }
 
 .bars.active .bar {
     background-color: transparent;
@@ -62,7 +62,6 @@ body {
     animation: bottom-bar 1s;
     animation-fill-mode: forwards;
 }
-
 
 /* Navbar Links CSS */
 
@@ -179,7 +178,6 @@ nav.visible li:last-child a {
     margin: 150px;
 }
 
-
 /* Main Body CSS */
 
 .container {
@@ -235,9 +233,7 @@ article a {
     }
 }
 
-
 @media screen and (max-width:800px) {
-
     h1 {
         padding-top: 80px;
         font-size: 60px;
