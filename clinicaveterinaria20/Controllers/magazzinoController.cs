@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace clinicaveterinaria20.Controllers
 {
@@ -29,19 +30,39 @@ namespace clinicaveterinaria20.Controllers
         [HttpPost]
         public JsonResult magazion(string nome)
         {
-            List<Prodotti> prodotto = database.Prodotti.Where((a) => a.nome == nome).ToList();
+            List<Prodotti> prodotto = new List<Prodotti>();
+            if (nome == "")
+            {
+                prodotto = database.Prodotti.ToList();
+            }
+            else
+            {
+                prodotto = database.Prodotti.Where((a) => a.nome == nome).ToList();
+            }
 
             List<ModelloProdotto> list = new List<ModelloProdotto>();
-            foreach (var item in prodotto)
+            if (prodotto.Count > 0)
+            {
+                foreach (var item in prodotto)
+                {
+                    ModelloProdotto modello = new ModelloProdotto();
+                    modello.nome = item.nome;
+                    modello.costo = item.costo;
+                    modello.idprodotto = item.idprodotto;
+                    modello.tipologia = item.tipologia;
+                    modello.foto = item.foto;
+                    modello.quantita = item.quantita;
+                    modello.costo = item.costo;
+                    modello.casetto = item.Cassetto.ncassetto;
+                    modello.armadietto = item.Cassetto.Armadietti.codice;
+
+                    list.Add(modello);
+                }
+            }
+            else
             {
                 ModelloProdotto modello = new ModelloProdotto();
-                modello.nome = item.nome;
-                modello.costo = item.costo;
-                modello.idprodotto = item.idprodotto;
-                modello.tipologia = item.tipologia;
-                modello.foto = item.foto;
-                modello.quantita = item.quantita;
-                modello.costo = item.costo;
+                modello.nome = "prodotto insesistente";
                 list.Add(modello);
             }
             return Json(list);
