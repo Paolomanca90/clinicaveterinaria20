@@ -27,7 +27,7 @@ namespace clinicaveterinaria20.Models
 
         public int? casetto { get; set; }
 
-        public int? armadietto { get; set; }
+        public string armadietto { get; set; }
 
         public int? brand { get; set; }
     }
