@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "SearchByMNumber";
+}
+
+<h2>Ricerca per microchip</h2>
+
+<div class="form-group">
+    <label for="nmicrochipInput">Inserire numero di microchip:</label>
+    <input id="nmicrochipInput" type="text"/>
+</div>
+<button id="bottone" class="btn btn-primary">Cerca</button>
+
+
+<div id="risultati" style="display:none;">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="" alt="Immagine">
+        <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text"></p>
+        </div>
+    </div>
+</div>
+
+<div id="errore" style="display:none;">Nessun animale trovato con il numero di microchip inserito.</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function() {
+            $("#bottone").click(function () {
+                let numero = $("#nmicrochipInput").val()
+                $("#errore").hide()
+                $("#risultati").hide()
+                $.ajax({
+                    type: "POST",
+                    url: "SearchByMNumber",
+                    data: { nmicrochip: numero },
+                    success: function (data) {
+
+                        $("#risultati").show()
+                        $(".card-img-top").attr("src", `/Content/img/uploads/${data.foto}`)
+                        $(".card-title").html(data.nome)
+                        $(".card-text").html(`${data.tipo} di colore ${data.coloreMantello}`)
+                    },
+                    error: function(){
+                        $("#errore").show()
+                    }
+                    
+                })
+            })
+        })
+    </script>
+    }

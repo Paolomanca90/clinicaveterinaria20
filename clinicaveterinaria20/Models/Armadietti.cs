@@ -18,6 +18,13 @@ namespace clinicaveterinaria20.Models
         [Key]
         public int idarmadietto { get; set; }
 
+        [NotMapped]
+        [Display(Name = "inserire numero casetti del armadietto")]
+        [Required(ErrorMessage = "campo obligatorio")]
+        public int nCassettti { get; set; }
+
+        [Display(Name = "inserire codice del armadietto")]
+        [Required(ErrorMessage = "campo obligatorio")]
         public string codice { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

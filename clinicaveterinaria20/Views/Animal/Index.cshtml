@@ -4,102 +4,135 @@
     ViewBag.Title = "Index";
 }
 
+@section styles{
+    <link href="~/Content/listaAnimali.css" rel="stylesheet" />
+}
+
 <h2>Index</h2>
 
-<p>
+<p class="text-end">
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table table-responsive-xl">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.dataRegistrazione)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tipo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.coloreMantello)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dataDinascita)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.microchip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nmicrochip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nomeProprietario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cognomeProprietario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.datainizioricovero)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.datafinericovero)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.codicefiscale)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.foto)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
+
+<div class="container color1">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="colunm-3">
+                <div class="approach-wrapper">
+                    <div class="aprroach-card" style="    background-image: url(http://image.lnstzy.cn/aoaodcom/2020-07/05/20200705083313b27fb8c7a70db0d833425b7b1abf6e4f.jpg.h700.jpg);">
+                        <div>
+                            <h3>
+                                @item.nome
+                            </h3>
+                            <p>
+                                Tipo: @item.tipo, Colore: @item.coloreMantello
+                            </p>
+                            @Html.ActionLink("Modifica", "Edit", new { id = item.idanimale, @class = "btn apprach-btn" })
+                            @Html.ActionLink("Anamnesi", "MedicalHistory", new { id = item.idanimale, @class = "btn apprach-btn" })
+                            @Html.ActionLink("Cancella", "Delete", new { id = item.idanimale, @class = "btn apprach-btn" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@*<table class="table table-responsive-xl">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.dataRegistrazione)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tipo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.coloreMantello)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dataDinascita)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.microchip)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nmicrochip)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nomeProprietario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cognomeProprietario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.datainizioricovero)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.datafinericovero)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.codicefiscale)
-            </td>
-            <td>
-                <img src="~/Content/img/uploads/@item.foto">
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idanimale }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.idanimale })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.dataRegistrazione)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.coloreMantello)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dataDinascita)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.microchip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nmicrochip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nomeProprietario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cognomeProprietario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.datainizioricovero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.datafinericovero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.codicefiscale)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.foto)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dataRegistrazione)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tipo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.coloreMantello)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dataDinascita)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.microchip)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nmicrochip)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nomeProprietario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cognomeProprietario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.datainizioricovero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.datafinericovero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.codicefiscale)
+                </td>
+                <td>
+                    <img src="~/Content/img/uploads/@item.foto">
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idanimale }) |
+                    @Html.ActionLink("Anamnesi", "MedicalHistory", new { id = item.idanimale }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idanimale })
+                </td>
+            </tr>
+        }
+
+    </table>*@

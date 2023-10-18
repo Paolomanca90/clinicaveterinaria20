@@ -106,8 +106,35 @@ namespace clinicaveterinaria20.Controllers
 
         public ActionResult MedicalHistory(int id)
         {
-            Animale a = db.Animale.Find(id);
-            return PartialView();
+            Animale animale = db.Animale.Include(a => a.Visita).FirstOrDefault(a => a.idanimale == id);
+            if (animale == null)
+            {
+                return HttpNotFound();
+            }
+
+            var visiteInOrdineCronologico = animale.Visita.OrderByDescending(v => v.datavisita).ToList();
+
+            return View(visiteInOrdineCronologico);
+        }
+
+        public ActionResult SearchByMNumber()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SearchByMNumber(string nmicrochip)
+        {
+            if (!string.IsNullOrEmpty(nmicrochip))
+            {
+                Animale animale = db.Animale.Where(a=>a.nmicrochip == nmicrochip).FirstOrDefault();
+                return Json(animale);
+            }
+            else
+            {
+                ViewBag.Errore = "Nessun animale trovato con il numero di microchip inserito.";
+                return View();
+            }
         }
     }
 }

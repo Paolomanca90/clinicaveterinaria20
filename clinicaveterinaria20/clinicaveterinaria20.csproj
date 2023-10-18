@@ -177,6 +177,10 @@
     <Compile Include="Migrations\202310170857113_InitMigration.designer.cs">
       <DependentUpon>202310170857113_InitMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310171558202_ok.cs" />
+    <Compile Include="Migrations\202310171558202_ok.designer.cs">
+      <DependentUpon>202310171558202_ok.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Animale.cs" />
     <Compile Include="Models\Armadietti.cs" />
@@ -184,6 +188,7 @@
     <Compile Include="Models\Cassetto.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\ModelloProdotto.cs" />
     <Compile Include="Models\Prodotti.cs" />
     <Compile Include="Models\SiteRole.cs" />
     <Compile Include="Models\Utente.cs" />
@@ -211,6 +216,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\img\uploads\placeholder.jpg" />
+    <Content Include="Content\listaAnimali.css" />
+    <Content Include="Content\navbar.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -239,12 +247,14 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\venditeCF.js" />
+    <Content Include="Scripts\script.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -273,10 +283,13 @@
     <Content Include="Views\Vendite\Index.cshtml" />
     <Content Include="Views\Vendite\Create.cshtml" />
     <Content Include="Views\Vendite\venditeCF.cshtml" />
+    <Content Include="Views\Animal\MedicalHistory.cshtml" />
+    <Content Include="Views\Animal\SearchByMNumber.cshtml" />
+    <Content Include="Views\magazzino\aggiungiArmadio.cshtml" />
+    <Content Include="Views\magazzino\ModificaProdotto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\img\uploads\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
@@ -353,6 +366,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202310170857113_InitMigration.resx">
       <DependentUpon>202310170857113_InitMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310171558202_ok.resx">
+      <DependentUpon>202310171558202_ok.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
