@@ -34,6 +34,10 @@
     margin: 1%;
 }
 
+.aprroach-card {
+    background-image: url(/Content/img/uploads/vet-bg.png);
+}
+
 @media(min-width:1080px) {
     .approach-wrapper {
         position: relative;
