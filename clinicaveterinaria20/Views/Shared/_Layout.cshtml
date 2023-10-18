@@ -52,17 +52,20 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    <script>
-        var bars = document.getElementById("nav-action");
-        var nav = document.getElementById("nav");
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/classnames/2.3.1/index.min.js'></script>
+    <script src='https://codepen.io/Hyperplexed/pen/xxYJYjM/54407644e24173ad6019b766443bf2a6.js'></script>
+    <script src="~/Scripts/script.js"></script>
+    @*<script>
+            var bars = document.getElementById("nav-action");
+            var nav = document.getElementById("nav");
 
-        bars.addEventListener("click", barClicked, false);
+            bars.addEventListener("click", barClicked, false);
 
-        function barClicked() {
-            bars.classList.toggle('active');
-            nav.classList.toggle('visible');
-        }
-    </script>
+            function barClicked() {
+                bars.classList.toggle('active');
+                nav.classList.toggle('visible');
+            }
+        </script>*@
     @RenderSection("scripts", required: false)
 </body>
 </html>

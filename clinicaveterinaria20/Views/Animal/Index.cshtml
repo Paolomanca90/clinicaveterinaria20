@@ -85,54 +85,54 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.dataRegistrazione)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tipo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.coloreMantello)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dataDinascita)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.microchip)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nmicrochip)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nomeProprietario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cognomeProprietario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.datainizioricovero)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.datafinericovero)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.codicefiscale)
-            </td>
-            <td>
-                <img src="~/Content/img/uploads/@item.foto">
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idanimale }) |
-                @Html.ActionLink("Anamnesi", "MedicalHistory", new { id = item.idanimale }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.idanimale })
-            </td>
-        </tr>
-    }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dataRegistrazione)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tipo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.coloreMantello)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dataDinascita)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.microchip)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nmicrochip)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nomeProprietario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cognomeProprietario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.datainizioricovero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.datafinericovero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.codicefiscale)
+                </td>
+                <td>
+                    <img src="~/Content/img/uploads/@item.foto">
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idanimale }) |
+                    @Html.ActionLink("Anamnesi", "MedicalHistory", new { id = item.idanimale }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idanimale })
+                </td>
+            </tr>
+        }
 
 </table>*@
