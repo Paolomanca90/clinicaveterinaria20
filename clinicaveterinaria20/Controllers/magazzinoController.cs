@@ -212,6 +212,15 @@ namespace clinicaveterinaria20.Controllers
         public ActionResult EliminaProdotto(int id)
         {
             Prodotti prodotti = database.Prodotti.Find(id);
+            List<Vendita> vendita = database.Vendita.Where((a)=> a.idprodotto == id).ToList();
+            if (vendita.Count > 0)
+            {
+                foreach (var item in vendita)
+                {
+                   database.Vendita.Remove(item);
+                }
+               
+            }
             database.Prodotti.Remove(prodotti);
             database.SaveChanges();
             return RedirectToAction("magazzino");

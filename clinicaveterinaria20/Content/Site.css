@@ -1,10 +1,31 @@
-﻿/* Set padding to keep content from hitting the edges */
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400&display=swap');
+
+/* Set padding to keep content from hitting the edges */
+body, p, h1, h2, h3, h4, h5, span, a, button, div, input, label {
+    font-family: 'Cairo', sans-serif;
+}
 .body-content {
     margin-top: 15px;
     padding-left: 15px;
     padding-right: 15px;
 }
-
+.form-group{
+    display:flex;
+ align-items:center;
+    flex-direction:column
+}
+.form-control {
+    background-color: #ffffff21;
+    color: #bcffff;
+}
+.btn-outline-info{
+    margin-top:20px;
+}
+.footer {
+    bottom: 0;
+    position: absolute;
+}
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
