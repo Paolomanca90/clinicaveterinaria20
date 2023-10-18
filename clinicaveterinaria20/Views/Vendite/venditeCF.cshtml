@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "venditeCF";
+}
+
+<h2>Mostra le vendite effettuate per cliente</h2>
+
+<input type="text" id="cf" placeholder="Inserisci il codice fiscale del cliente"/>
+<input type="button" id="btn1" value="Avvia ricerca per CF"/>
+<input type="date" id="input-data" />
+<input type="button" id="btn2" value="Avvia ricerca per data" />
+
+
+<ul id="list-cf"></ul>
+
+<ul id="list-data"></ul>
+
+
+
+
+
+
+@section scripts{
+    
+    <script src="~/Scripts/venditeCF.js">
+
+    </script>
+    
+    
+    }
