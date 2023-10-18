@@ -207,6 +207,7 @@ namespace clinicaveterinaria20.Controllers
             }
             return View();
         }
+
         [HttpGet]
         public ActionResult EliminaProdotto(int id)
         {
@@ -214,6 +215,38 @@ namespace clinicaveterinaria20.Controllers
             database.Prodotti.Remove(prodotti);
             database.SaveChanges();
             return RedirectToAction("magazzino");
+        }
+        [HttpGet]
+        public ActionResult ModificaProdotto(int id)
+        {
+
+            Prodotti p = database.Prodotti.Find(id);
+            return View(p);
+
+        }
+        [HttpPost]
+        public ActionResult ModificaProdotto(Prodotti p)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                var prodotti = database.Prodotti.Find(p.idprodotto);
+                
+                prodotti.nome = p.nome;
+                prodotti.tipologia = p.tipologia;
+                prodotti.foto = p.foto;
+                prodotti.quantita = p.quantita;
+                prodotti.costo = p.costo;
+                prodotti.idcassetto = p.idcassetto;
+                prodotti.idutilizzo = p.idutilizzo;
+                prodotti.idbrand = p.idbrand;
+
+
+                database.Entry(prodotti).State = EntityState.Modified;
+                database.SaveChanges();
+              
+            }
+            return View(p);
         }
     }
 }

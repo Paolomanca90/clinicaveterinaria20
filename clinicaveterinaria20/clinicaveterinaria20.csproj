@@ -280,6 +280,7 @@
     <Content Include="Views\Animal\MedicalHistory.cshtml" />
     <Content Include="Views\Animal\SearchByMNumber.cshtml" />
     <Content Include="Views\magazzino\aggiungiArmadio.cshtml" />
+    <Content Include="Views\magazzino\ModificaProdotto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
