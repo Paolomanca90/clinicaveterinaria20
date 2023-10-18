@@ -11,7 +11,6 @@
     <p><strong>@ViewBag.Errore</strong></p>
 }
 
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -20,7 +19,6 @@
         <h4>Vendita</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
 
         <div class="form-group">
             @Html.LabelFor(model => model.nricetta, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -41,10 +39,9 @@
             @Html.LabelFor(model => model.idprodotto, htmlAttributes: new { @class = "control-label col-md-2" })
             <div>
                 @Html.DropDownListFor(model => model.idprodotto, new SelectList(ViewBag.Prodotti, "Value", "Text"), new { @class = "rounded w-50 border border-2 border-black text-center", id = "Prodotto" })
-
             </div>
         </div>
-
+        <p> @ViewBag.errore</p>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Completa vendita" class="btn btn-success" />
@@ -52,7 +49,6 @@
         </div>
     </div>
 }
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
