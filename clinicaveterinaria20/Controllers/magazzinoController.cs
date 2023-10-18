@@ -186,5 +186,13 @@ namespace clinicaveterinaria20.Controllers
             }
             return View();
         }
+        [HttpGet]
+        public ActionResult EliminaProdotto(int id)
+        {
+            Prodotti prodotti = database.Prodotti.Find(id);
+            database.Prodotti.Remove(prodotti);
+            database.SaveChanges();
+            return RedirectToAction("magazzino");
+        }
     }
 }
