@@ -20,6 +20,7 @@ namespace clinicaveterinaria20.Models
         public int idcliente { get; set; }
 
         [StringLength(16)]
+        [Display(Name = "Inserisci il Codice Fiscale del Cliente")]
         [RegularExpression(@"^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$", ErrorMessage = "inserire un codice fiscale corretto")]
         public string codicefiscale { get; set; }
 
