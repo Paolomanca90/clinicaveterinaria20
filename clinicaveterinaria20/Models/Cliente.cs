@@ -19,6 +19,7 @@ namespace clinicaveterinaria20.Models
         public int idcliente { get; set; }
 
         [StringLength(16)]
+        [Display(Name = "Inserisci il Codice Fiscale del Cliente")]
         public string codicefiscale { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
