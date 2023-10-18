@@ -1,34 +1,64 @@
-﻿
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400&display=swap');
 
 /* Set padding to keep content from hitting the edges */
 body, p, h1, h2, h3, h4, h5, span, a, button, div, input, label {
     font-family: 'Cairo', sans-serif;
+    color: #141461
 }
+
+.cf {
+    margin-top: 0px;
+    font-size: 3rem;
+}
+
+.cfForm {
+    height: 35%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.inputCF {
+    font-size: 1.4rem;
+    height: 50px;
+    box-shadow: 5px 2px 6px 0px rgba(255,255,255,0.43);
+    width: 387px;
+}
+
 .body-content {
     margin-top: 15px;
     padding-left: 15px;
     padding-right: 15px;
 }
-.form-group{
-    display:flex;
- align-items:center;
-    flex-direction:column
+
+.form-group {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center
 }
+
 .form-control {
     background-color: #ffffff21;
-    color: #bcffff;
+    color: #141461;
+    border: 0
 }
-.btn-outline-info{
-    margin-top:20px;
+
+.btn-outline-info {
+    margin-top: 20px;
 }
+
 .footer {
     bottom: 0;
     position: absolute;
 }
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+
+.btnCF {
+    background-color: #ffffff;
+    color: #141461;
+    margin-top: 38px;
+    font-size: 1.5rem;
 }
+.quantity{width:60px}
+.control-label{font-size:1.4rem}
+/* Set width on the form input elements since they're 100% wide by default */

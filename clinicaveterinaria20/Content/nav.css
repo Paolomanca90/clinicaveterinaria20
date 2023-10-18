@@ -5,13 +5,13 @@
 
 body {
     position: relative;
-    background: url('http://thecodeplayer.com/u/m/b1.png') no-repeat center center fixed;
+    background-color: #9DC8FF;
     background-size: cover;
     min-width: 500px;
     min-height: 200px;
     color: #fff;
     font-family: 'Montserrat';
-    height: 96vh;
+    height: 97vh;
 }
 
 .bars {
@@ -43,28 +43,27 @@ body {
         position: absolute;
     }
 
-.bar::before {
-    transform: translateY(-9px);
-}
+    .bar::before {
+        transform: translateY(-9px);
+    }
 
-.bar::after {
-    transform: translateY(9px);
-}
+    .bar::after {
+        transform: translateY(9px);
+    }
 
 .bars.active .bar {
     background-color: transparent;
 }
 
-.bars.active .bar::before {
-    animation: top-bar 1s;
-    animation-fill-mode: forwards;
-}
+    .bars.active .bar::before {
+        animation: top-bar 1s;
+        animation-fill-mode: forwards;
+    }
 
-.bars.active .bar::after {
-    animation: bottom-bar 1s;
-    animation-fill-mode: forwards;
-}
-
+    .bars.active .bar::after {
+        animation: bottom-bar 1s;
+        animation-fill-mode: forwards;
+    }
 
 /* Navbar Links CSS */
 
@@ -181,7 +180,6 @@ nav.visible li:last-child a {
     margin: 150px;
 }
 
-
 /* Main Body CSS */
 
 .container {
@@ -236,9 +234,7 @@ article a {
     }
 }
 
-
 @media screen and (max-width:800px) {
-
     h1 {
         padding-top: 80px;
         font-size: 60px;
