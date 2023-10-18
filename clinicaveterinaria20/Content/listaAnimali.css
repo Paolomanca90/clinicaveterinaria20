@@ -1,24 +1,23 @@
-﻿.container {
-    margin: auto;
-    padding: 0;
-    min-height: 100vh;
-    /*height: 90vh;*/
+﻿.center {
+    margin: 3em auto;
+    padding: 3em 0;
+    /*min-height: 100vh;*/
+    height: 100%;
     display: block;
-    width: 100%;
+    width: 80%;
     display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
     vertical-align: baseline;
     position: relative;
-    position: relative;
 }
 
 .color1 {
-    background-color: rgba(242, 242, 242, .2);
+    background-color: rgba(41, 121, 255, .7);
 }
 
-.row {
+.rowCenter {
     display: flex;
     text-align: center;
     justify-content: center;
@@ -58,7 +57,7 @@
     position: relative;
 }
 
-    .approach-wrapper h1, .approach-wrapper h2, .approach-wrapper h3, .approach-wrapper h4, p {
+    .approach-wrapper h1, .approach-wrapper h2, .approach-wrapper h3, .approach-wrapper h4, .approach-wrapper p {
         margin: 1rem 0;
         color: #fff;
     }
@@ -70,9 +69,9 @@
     background-size: cover;
     overflow: hidden;
     text-align: center;
-    font-size: 20px;
+    font-size: 40px;
     color: #000;
-    background-color: rgba(0, 0, 0, .2);
+    background-color: rgba(0, 0, 0, .6);
     padding: 50px;
     border-radius: 10px 10px 10px 10px;
     display: flex;
@@ -81,7 +80,6 @@
     vertical-align: baseline;
     margin: auto;
     border: .5px solid #ccc;
-    height: 65vh
 }
 
     .aprroach-card h3 {
@@ -95,6 +93,7 @@
     line-height: normal;
     padding: 0.3em 1.4696em;
     font-size: 15px;
+    color: white;
 }
 
 .aprroach-card p {
@@ -121,20 +120,22 @@
     .btn:after {
         top: -1px;
         left: -1px;
-        border-top: 5px solid black;
-        border-left: 5px solid black;
+        border-top: 5px solid white;
+        border-left: 5px solid white;
     }
 
     .btn:before {
         bottom: -1px;
         right: -1px;
-        border-bottom: 5px solid black;
-        border-right: 5px solid black;
+        border-bottom: 5px solid white;
+        border-right: 5px solid white;
     }
 
     .btn:hover {
         border-top-right-radius: 0px;
         border-bottom-left-radius: 0px;
+        font-weight: 800;
+        color: white;
     }
 
         .btn:hover:before, .btn:hover:after {

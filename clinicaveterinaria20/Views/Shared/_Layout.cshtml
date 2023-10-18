@@ -7,43 +7,12 @@
     <title>@ViewBag.Title - Applicazione ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @RenderSection("styles", required: false)
     <link href="~/Content/nav.css" rel="stylesheet" />
+    <link href="~/Content/footer.css" rel="stylesheet" />
+    @RenderSection("styles", required: false)
 </head>
 <body>
 
-    @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-        <div class="container">
-            @Html.ActionLink("Nome dell'applicazione", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Animali", "Index", "Animal", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Visite", "Index", "Appointment", new { area = "" }, new { @class = "nav-link" })</li>
-            <div class="container">
-                @Html.ActionLink("Nome dell'applicazione", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("Animali", "Index", "Animal", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("Visite", "Index", "Appointment", new { area = "" }, new { @class = "nav-link" })</li>
-                    </ul>
-                </div>
-            </div>
-        </nav>*@
-
-    @*<div class="bars" id="nav-action">
-            <span class="bar"> </span>
-        </div>
-    </nav>*@
     <div class="bars" id="nav-action">
         <span class="bar"> </span>
     </div>
@@ -57,11 +26,105 @@
             </li>
         </ul>
     </nav>
-    <div class="container body-content">
+    <div class="container-fluid body-content p-0 min-vh-100 d-flex flex-column justify-content-between">
         @RenderBody()
-        <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
+            <div class="row w-75 mx-auto">
+
+                <div class="column">
+                    <h4>PawCare Clinica Veterinaria</h4>
+                    <p>
+                        Teniamo alla cura dei vostri pet e facciamo in modo che si sentano a casa quando vengono a trovarci.
+                    </p>
+                    <h4>Orari <i class="fa fa-clock" style="color: #6FAAFF"></i></h4>
+                    <ul>
+                    <li class="m-0"><ins>Lun.</ins> &nbsp;08:00 - 18:30</li>
+                    <li class="m-0"><ins>Mar.</ins> &nbsp;08:00 - 18:30</li>
+                    <li class="m-0"><ins>Mer.</ins> &nbsp;08:00 - 18:30</li>
+                    <li class="m-0"><ins>Gio.</ins> &nbsp;08:00 - 18:30</li>
+                    <li class="m-0"><ins>Ven.</ins> &nbsp;08:00 - 18:30</li>
+                    </ul>
+
+                </div>
+
+                <div class="column d-flex flex-column align-items-center">
+                    <h4>Link Utili</h4>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-angle-right"></i>
+                                Newsletter
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-angle-right"></i>
+                                Contatti
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-angle-right"></i>
+                                Prenotazioni
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="column ps-5">
+                    <h4 class="ps-5">Seguici su</h4>
+                    <ul class="social-icons ps-5">
+                        <li>
+                            Maicol Abbiento
+                            <a href="https://www.linkedin.com/in/maicol-abbiento-fullstackdeveloper/">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/MaicolAbbiento">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </li>
+                        <li>
+                            Giulia Orlando
+                            <a href="https://www.linkedin.com/in/giuliaorlando-webdeveloper-linguist/">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/giuliasorlando">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </li>
+                        <li>
+                            Paolo Manca
+                            <a href="https://www.linkedin.com/in/paolo-manca-developer/">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/Paolomanca90">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </li>
+                        <li>
+                            Raffaele Ianniello
+                            <a href="https://www.linkedin.com/in/raffaeleianniello-webdeveloper/">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/RaffaeleIanniello">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </li>
+                        <li>
+                            Valerio Paratore
+                            <a href="#">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </li>
+                     
+                    </ul>
+                </div>
+
+            </div>
+            <p class="copyright">&copy; @DateTime.Now.Year All Rights Reserved - Maicol Abbiento, Giulia Orlando, Paolo Manca, Raffaele Ianniello, Valerio Paratore</p>
         </footer>
     </div>
 
@@ -70,7 +133,7 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/classnames/2.3.1/index.min.js'></script>
     <script src='https://codepen.io/Hyperplexed/pen/xxYJYjM/54407644e24173ad6019b766443bf2a6.js'></script>
     <script src="~/Scripts/script.js"></script>
-    @*<script>
+    <script>
             var bars = document.getElementById("nav-action");
             var nav = document.getElementById("nav");
 
@@ -80,7 +143,7 @@
                 bars.classList.toggle('active');
                 nav.classList.toggle('visible');
             }
-        </script>*@
+        </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

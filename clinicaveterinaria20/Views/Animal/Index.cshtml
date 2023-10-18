@@ -8,30 +8,30 @@
     <link href="~/Content/listaAnimali.css" rel="stylesheet" />
     }
 
-<h2>Index</h2>
+<h2 class="p-5 fw-semibold display-4">Anagrafica dei pet</h2>
 
-<p class="text-end">
-    @Html.ActionLink("Create New", "Create")
+<p class="text-center px-5 fs-1">
+    @Html.ActionLink("Nuovo paziente", "Create", null, new {@class="text-light text-decoration-underline"})
 </p>
 
 
-    <div class="container color1">
-        <div class="row">
+<div class="center color1">
+        <div class="rowCenter">
             @foreach (var item in Model)
             {
                 <div class="colunm-3">
                     <div class="approach-wrapper">
                         <div class="aprroach-card">
                             <div>
-                                <h3>
+                                <h2>
                                     @item.nome
-                                </h3>
-                                <p>
-                                    Tipo: @item.tipo, Colore: @item.coloreMantello
-                                </p>
-                                @Html.ActionLink("Modifica", "Edit", new { id = item.idanimale, @class = "btn apprach-btn" })
-                                @Html.ActionLink("Anamnesi", "MedicalHistory", new { id = item.idanimale, @class = "btn apprach-btn" })
-                                @Html.ActionLink("Cancella", "Delete", new { id = item.idanimale, @class = "btn apprach-btn" })
+                                </h2>
+                                <h4>
+                                    Specie: @item.tipo - Colore: @item.coloreMantello
+                                </h4>
+                                @Html.ActionLink("Modifica", "Edit", new { id = item.idanimale },new { @class = "btn apprach-btn" })
+                                @Html.ActionLink("Anamnesi", "MedicalHistory", new { id = item.idanimale}, new { @class = "btn apprach-btn" })
+                                @Html.ActionLink("Cancella", "Delete", new { id = item.idanimale}, new { @class = "btn apprach-btn" })
                             </div>
                         </div>
                     </div>
@@ -40,99 +40,3 @@
         </div>
     </div>
     
-
-@*<table class="table table-responsive-xl">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.dataRegistrazione)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tipo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.coloreMantello)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dataDinascita)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.microchip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nmicrochip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nomeProprietario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cognomeProprietario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.datainizioricovero)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.datafinericovero)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.codicefiscale)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.foto)
-        </th>
-        <th></th>
-    </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.dataRegistrazione)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tipo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.coloreMantello)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.dataDinascita)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.microchip)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nmicrochip)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nomeProprietario)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.cognomeProprietario)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.datainizioricovero)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.datafinericovero)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.codicefiscale)
-                </td>
-                <td>
-                    <img src="~/Content/img/uploads/@item.foto">
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.idanimale }) |
-                    @Html.ActionLink("Anamnesi", "MedicalHistory", new { id = item.idanimale }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.idanimale })
-                </td>
-            </tr>
-        }
-
-</table>*@
