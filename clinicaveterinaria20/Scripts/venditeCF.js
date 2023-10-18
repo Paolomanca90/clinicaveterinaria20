@@ -7,6 +7,7 @@
             data: { cf: input },
             success: function (data) {
                 $.each(data, function (n, e) {
+                    $("#list-cf").empty()
                     let row = ""
                     if (e.idcliente == -1) {
                         row = "nesuna vendita per questo cliente"
@@ -27,6 +28,7 @@
             data: { pippo: input },
             success: function (data) {
                 $.each(data, function (n, e) {
+                    $("#list-data").empty()
                     let row = ""
                     if (e.idcliente == -1) {
                         row = "nesuna vendita in questa data"
