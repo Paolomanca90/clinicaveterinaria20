@@ -4,14 +4,19 @@
         $.ajax({
             method: "POST",
             url: "jsnVenditeCF",
-            data: {cf: input},
+            data: { cf: input },
             success: function (data) {
-                $.each(data, function (n,e){
-
-                    var row = `<li>Numero ricetta:${e.nricetta}, quantita: ${e.quantita}, costo totale: ${e.costotot}</li>`   
+                $.each(data, function (n, e) {
+                    let row = ""
+                    if (e.idcliente == -1) {
+                        row = "nesuna vendita per questo cliente"
+                    }
+                    else {
+                        row = `<li>Numero ricetta:${e.nricetta}, quantita: ${e.quantita}, costo totale: ${e.costotot}</li>`
+                    }
                     $("#list-cf").append(row)
                 })
-            } 
+            }
         })
     })
     $("#btn2").click(function () {
@@ -22,8 +27,13 @@
             data: { pippo: input },
             success: function (data) {
                 $.each(data, function (n, e) {
-
-                    var row = `<li>Numero ricetta:${e.nricetta}, quantita: ${e.quantita}, costo totale: ${e.costotot}</li>`
+                    let row = ""
+                    if (e.idcliente == -1) {
+                        row = "nesuna vendita in questa data"
+                    }
+                    else {
+                        row = `<li>Numero ricetta:${e.nricetta}, quantita: ${e.quantita}, costo totale: ${e.costotot}</li>`
+                    }
                     $("#list-data").append(row)
                 })
             }
