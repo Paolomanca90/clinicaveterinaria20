@@ -14,7 +14,7 @@ footer {
 }
 .row{
     width: 100%;
-    padding: 1em 2em;
+    padding: 2em;
 }
 .column {
     width: calc(100% / 3);
