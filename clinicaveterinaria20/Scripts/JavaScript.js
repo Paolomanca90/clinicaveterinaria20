@@ -7,6 +7,7 @@
             data: { nome: impt },
             success: function (data) {
                 $.each(data, function (n, e) {
+                    $("#div").empty()
                     console.log(e)
                     let p = ""
                     if (e.nome == "prodotto insesistente") {
