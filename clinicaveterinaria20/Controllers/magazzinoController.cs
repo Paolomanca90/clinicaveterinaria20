@@ -65,7 +65,6 @@ namespace clinicaveterinaria20.Controllers
 
         // GET: magazzino
 
-
         public ActionResult Index()
         {
             return View();
@@ -105,6 +104,7 @@ namespace clinicaveterinaria20.Controllers
                     modello.costo = item.costo;
                     modello.casetto = item.Cassetto.ncassetto;
                     modello.armadietto = item.Cassetto.Armadietti.codice;
+                    modello.invendita = item.invendita;
 
                     list.Add(modello);
                 }
@@ -172,7 +172,7 @@ namespace clinicaveterinaria20.Controllers
                     return View();
                 }
                 Prodotti prodotto = database.Prodotti.FirstOrDefault((a) => a.nome == p.nome);
-                if(prodotto != null)
+                if (prodotto != null)
                 {
                     ViewBag.Armadietti = ListaArmadietti;
                     ViewBag.Brand = ListaBrand;
@@ -181,7 +181,7 @@ namespace clinicaveterinaria20.Controllers
                     return View();
                 }
                 Prodotti prod = database.Prodotti.FirstOrDefault(a => a.Cassetto.ncassetto == p.Cassetto.ncassetto && a.Cassetto.idarmadietto == p.Cassetto.idarmadietto);
-                if(prod != null)
+                if (prod != null)
                 {
                     ViewBag.Armadietti = ListaArmadietti;
                     ViewBag.Brand = ListaBrand;
@@ -243,15 +243,8 @@ namespace clinicaveterinaria20.Controllers
         public ActionResult EliminaProdotto(int id)
         {
             Prodotti prodotti = database.Prodotti.Find(id);
-            List<Vendita> vendita = database.Vendita.Where((a) => a.idprodotto == id).ToList();
-            if (vendita.Count > 0)
-            {
-                foreach (var item in vendita)
-                {
-                    database.Vendita.Remove(item);
-                }
-            }
-            database.Prodotti.Remove(prodotti);
+            prodotti.invendita = !prodotti.invendita;
+            database.Entry(prodotti).State = EntityState.Modified;
             database.SaveChanges();
             return RedirectToAction("magazzino");
         }
