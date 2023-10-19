@@ -19,8 +19,8 @@ namespace clinicaveterinaria20.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register (Utente u)
         {
-            List<Utente> uList = db.Utente.ToList();
-            Utente utente = db.Utente.FirstOrDefault(m=> m == u);
+            
+            Utente utente = db.Utente.FirstOrDefault(m=> m.username == u.username && m.password == u.password);
             if (utente == null)
             {
                 db.Utente.Add(u);

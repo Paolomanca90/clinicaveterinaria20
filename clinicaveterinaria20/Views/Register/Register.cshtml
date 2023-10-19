@@ -4,7 +4,7 @@
     ViewBag.Title = "Register";
 }
 
-<div class="d-flex justify-content-end align-content-end" >
+<div class="ms-5" >
     <h2>Registra nuovo utente</h2>
     <div>
         @if (ViewBag.Errore != null)
@@ -19,8 +19,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>Utente</h4>
-            <hr />
+            <h4>Inserisci i dati</h4>
+           
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -55,7 +55,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-success" />
+                    <input type="submit" value="Aggiungi utente" class="btn btn-success" />
                 </div>
             </div>
         </div>
