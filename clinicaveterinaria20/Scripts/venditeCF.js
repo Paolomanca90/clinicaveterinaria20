@@ -6,14 +6,14 @@
             url: "jsnVenditeCF",
             data: { cf: input },
             success: function (data) {
+                $("#list-cf").empty()
                 $.each(data, function (n, e) {
-                    $("#list-cf").empty()
                     let row = ""
                     if (e.idcliente == -1) {
-                        row = "nesuna vendita per questo cliente"
+                        row = "nessuna vendita per questo cliente"
                     }
                     else {
-                        row = `<li>Numero ricetta:${e.nricetta}, quantita: ${e.quantita}, costo totale: ${e.costotot}</li>`
+                        row = `<li>Numero ricetta:${e.nricetta}, quantita: ${e.quantita}, costo totale: ${e.costotot} <a href="./EditVendita/${e.idvendita}"> modifica vendita</a> <a href="./DeleteVendita/${e.idvendita}"> storna vendita</a></li>`
                     }
                     $("#list-cf").append(row)
                 })
@@ -27,14 +27,14 @@
             url: "jsnVenditeData",
             data: { pippo: input },
             success: function (data) {
+                $("#list-data").empty()
                 $.each(data, function (n, e) {
-                    $("#list-data").empty()
                     let row = ""
                     if (e.idcliente == -1) {
-                        row = "nesuna vendita in questa data"
+                        row = "nessuna vendita in questa data"
                     }
                     else {
-                        row = `<li>Numero ricetta:${e.nricetta}, quantita: ${e.quantita}, costo totale: ${e.costotot}</li>`
+                        row = `<li>Numero ricetta:${e.nricetta}, quantita: ${e.quantita}, costo totale: ${e.costotot} <a href="./EditVendita/${e.idvendita}"> modifica vendita</a> <a href="./DeleteVendita/${e.idvendita}"> storna vendita</a></li>`
                     }
                     $("#list-data").append(row)
                 })

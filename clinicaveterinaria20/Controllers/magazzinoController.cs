@@ -162,14 +162,11 @@ namespace clinicaveterinaria20.Controllers
                     string nomeFile = foto.FileName;
                     string pathToSave = Path.Combine(Server.MapPath("~/Content/img/uploads"), nomeFile);
                     foto.SaveAs(pathToSave);
+                    p.foto = foto.FileName;
                 }
                 else
                 {
-                    ViewBag.Armadietti = ListaArmadietti;
-                    ViewBag.Brand = ListaBrand;
-                    ViewBag.Utlizzi = ListaUtilizzi;
-                    ViewBag.Errore = "Inserire un'immagine";
-                    return View();
+                    p.foto = "placeholder.jpg";
                 }
                 Prodotti prodotto = database.Prodotti.FirstOrDefault((a) => a.nome == p.nome);
                 if (prodotto != null)
@@ -191,8 +188,8 @@ namespace clinicaveterinaria20.Controllers
                 }
                 Cassetto c = database.Cassetto.FirstOrDefault(a => a.ncassetto == p.Cassetto.ncassetto && a.idarmadietto == p.Cassetto.idarmadietto);
                 p.idcassetto = c.idcassetto;
-                p.foto = foto.FileName;
                 p.Cassetto = null;
+                p.invendita = true;
                 database.Prodotti.Add(p);
                 database.SaveChanges();
                 TempData["Successo"] = "Prodotto aggiunto all'elenco";
@@ -252,27 +249,58 @@ namespace clinicaveterinaria20.Controllers
         [HttpGet]
         public ActionResult ModificaProdotto(int id)
         {
+            ViewBag.Armadietti = ListaArmadietti;
+            ViewBag.Brand = ListaBrand;
+            ViewBag.Utlizzi = ListaUtilizzi;
             Prodotti p = database.Prodotti.Find(id);
             return View(p);
         }
 
         [HttpPost]
-        public ActionResult ModificaProdotto(Prodotti p)
+        public ActionResult ModificaProdotto([Bind(Exclude = "invendita")] Prodotti p, HttpPostedFileBase foto)
         {
+            Model1 db = new Model1();
             if (ModelState.IsValid)
             {
-                var prodotti = database.Prodotti.Find(p.idprodotto);
+                var prodotto = database.Prodotti.Find(p.idprodotto);
+                if (foto != null && foto.ContentLength > 0)
+                {
+                    string nomeFile = foto.FileName;
+                    string pathToSave = Path.Combine(Server.MapPath("~/Content/img/uploads"), nomeFile);
+                    foto.SaveAs(pathToSave);
+                    p.foto = foto.FileName;
+                }
+                else
+                {
+                    p.foto = prodotto.foto;
+                }
 
-                prodotti.nome = p.nome;
-                prodotti.tipologia = p.tipologia;
-                prodotti.foto = p.foto;
-                prodotti.quantita = p.quantita;
-                prodotti.costo = p.costo;
-
-                database.Entry(prodotti).State = EntityState.Modified;
-                database.SaveChanges();
+                if(p.Cassetto.ncassetto == prodotto.Cassetto.ncassetto)
+                {
+                    p.idcassetto = prodotto.idcassetto;
+                }
+                else
+                {
+                    Prodotti prod = database.Prodotti.FirstOrDefault(a => a.Cassetto.ncassetto == p.Cassetto.ncassetto && a.Cassetto.idarmadietto == p.Cassetto.idarmadietto);
+                    if (prod != null)
+                    {
+                        ViewBag.Armadietti = ListaArmadietti;
+                        ViewBag.Brand = ListaBrand;
+                        ViewBag.Utlizzi = ListaUtilizzi;
+                        ViewBag.Errore = "Cassetto già occupato";
+                        return View();
+                    }
+                    Cassetto c = database.Cassetto.FirstOrDefault(a => a.ncassetto == p.Cassetto.ncassetto && a.idarmadietto == p.Cassetto.idarmadietto);
+                    p.idcassetto = c.idcassetto;
+                }
+                p.Cassetto = null;
+                db.Entry(p).State = EntityState.Modified;
+                db.SaveChanges();
+                TempData["Successo"] = "Prodotto modificato";
+                return RedirectToAction("ModificaProdotto");
             }
-            return View(p);
+            ViewBag.Errore = "Errore durante la procedura";
+            return View();
         }
 
         public ActionResult AddUtilizzo()

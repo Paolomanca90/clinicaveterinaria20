@@ -304,6 +304,7 @@
     <Content Include="Views\magazzino\aggiungiArmadio.cshtml" />
     <Content Include="Views\magazzino\ModificaProdotto.cshtml" />
     <Content Include="Views\magazzino\AddUtilizzo.cshtml" />
+    <Content Include="Views\Vendite\EditVendita.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

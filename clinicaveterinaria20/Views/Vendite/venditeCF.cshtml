@@ -2,6 +2,12 @@
 @{
     ViewBag.Title = "venditeCF";
 }
+
+@if (TempData["Successo"] != null)
+{
+    <p class="text-center text-primary fs-5 fst-italic p-3">@TempData["Successo"]</p>
+}
+
 <body class="bovendite">
     <h2 class="accadue">MOSTRA LE VENDITE EFFETTUATE PER CLIENTE</h2>
     <div class="venditeCF">
@@ -22,10 +28,10 @@
 
 
 @section scripts{
-    
+
     <script src="~/Scripts/venditeCF.js">
 
     </script>
-    
-    
-    }
+
+
+}
