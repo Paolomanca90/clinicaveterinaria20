@@ -186,6 +186,14 @@
     <Compile Include="Migrations\202310180953269_rejex.designer.cs">
       <DependentUpon>202310180953269_rejex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310190821583_required colum cassetto.cs" />
+    <Compile Include="Migrations\202310190821583_required colum cassetto.designer.cs">
+      <DependentUpon>202310190821583_required colum cassetto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310190945225_new.cs" />
+    <Compile Include="Migrations\202310190945225_new.designer.cs">
+      <DependentUpon>202310190945225_new.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Animale.cs" />
     <Compile Include="Models\Armadietti.cs" />
@@ -296,6 +304,7 @@
     <Content Include="Views\Animal\SearchByMNumber.cshtml" />
     <Content Include="Views\magazzino\aggiungiArmadio.cshtml" />
     <Content Include="Views\magazzino\ModificaProdotto.cshtml" />
+    <Content Include="Views\magazzino\AddUtilizzo.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -382,6 +391,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310180953269_rejex.resx">
       <DependentUpon>202310180953269_rejex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310190821583_required colum cassetto.resx">
+      <DependentUpon>202310190821583_required colum cassetto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310190945225_new.resx">
+      <DependentUpon>202310190945225_new.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
