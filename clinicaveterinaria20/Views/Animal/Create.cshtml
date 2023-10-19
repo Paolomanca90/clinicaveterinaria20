@@ -4,130 +4,146 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+@section styles{
+    <style>
+        .btn:hover{
+            background-color: dodgerblue !important;
+            color: white !important;
+        }
+    </style>
+    }
 
+<h2 class="p-5 fw-semibold display-4">Nuovo paziente</h2>
 
-@using (Html.BeginForm("Create", "Animal", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
+<div class="position-relative pb-5">
+    @using (Html.BeginForm("Create", "Animal", FormMethod.Post, new { enctype = "multipart/form-data", @class="w-50 mx-auto" }))
+    {
+        @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Animale</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.nome, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.nome, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.tipo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.tipo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.tipo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.coloreMantello, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.coloreMantello, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.coloreMantello, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.dataDinascita, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.dataDinascita, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.dataDinascita, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.microchip, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.CheckBox("isMicrochipChecked", Model.microchip ?? false, new { id = "toggleCheckChip" })
-            </div>
-        </div>
-
-        <div class="form-group" id="nmicrochipDiv" style="display:none;">
-            @Html.LabelFor(model => model.nmicrochip, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.nmicrochip, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.nmicrochip, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        @Html.Label("toggleCheckOwner", "Ha un proprietario")
-        @Html.CheckBox("isProprietario", false, new { id = "toggleCheckOwner" })
-
-        <div id="proprietarioDiv" style="display:none;">
-            <div class="form-group">
-                @Html.LabelFor(model => model.nomeProprietario, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.nomeProprietario, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.nomeProprietario, "", new { @class = "text-danger" })
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.nome, htmlAttributes: new { @class = "control-label fw-semibold pb-2" })
+                <div class="w-100">
+                    @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "form-control w-100 rounded-pill p-2" } })
+                    @Html.ValidationMessageFor(model => model.nome, "", new { @class = "text-danger" })
                 </div>
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.cognomeProprietario, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.cognomeProprietario, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.cognomeProprietario, "", new { @class = "text-danger" })
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.tipo, htmlAttributes: new { @class = "control-label fw-semibold pb-2" })
+                <div class="w-100">
+                    @Html.EditorFor(model => model.tipo, new { htmlAttributes = new { @class = "form-control w-100 rounded-pill p-2" } })
+                    @Html.ValidationMessageFor(model => model.tipo, "", new { @class = "text-danger" })
                 </div>
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.codicefiscale, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.codicefiscale, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.codicefiscale, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.Label("toggleCheckSmarrito", "L'animale è smarrito?", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.CheckBox("isSmarrito", false, new { id = "toggleCheckSmarrito" })
-            </div>
-        </div>
-
-        <div id="smarritoDiv" style="display:none;">
-            <div class="form-group">
-                @Html.LabelFor(model => model.datainizioricovero, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.datainizioricovero, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.datainizioricovero, "", new { @class = "text-danger" })
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.coloreMantello, htmlAttributes: new { @class = "control-label fw-semibold pb-2" })
+                <div class="w-100">
+                    @Html.EditorFor(model => model.coloreMantello, new { htmlAttributes = new { @class = "form-control w-100 rounded-pill p-2" } })
+                    @Html.ValidationMessageFor(model => model.coloreMantello, "", new { @class = "text-danger" })
                 </div>
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.foto, htmlAttributes: new { @class = "control-label col-md-2" });
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.foto, new { htmlAttributes = new { type = "file", @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.foto, "", new { @class = "text-danger" })
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.dataDinascita, htmlAttributes: new { @class = "control-label fw-semibold pb-2" })
+                <div class="w-100">
+                    @Html.EditorFor(model => model.dataDinascita, new { htmlAttributes = new { @class = "form-control w-100 rounded-pill p-2" } })
+                    @Html.ValidationMessageFor(model => model.dataDinascita, "", new { @class = "text-danger" })
                 </div>
             </div>
-        </div>
+            <div class="d-flex justify-content-around">
+                <div style="width:calc(100%/3)">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.microchip, htmlAttributes: new { @class = "control-label fw-semibold" })
+                        <div class="w-10 text-center">
+                            @Html.CheckBox("isMicrochipChecked", Model.microchip ?? false, new { id = "toggleCheckChip" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                    <div class="form-group" id="nmicrochipDiv" style="display:none;">
+                        @Html.LabelFor(model => model.nmicrochip, htmlAttributes: new { @class = "control-label fw-semibold pb-2" })
+                        <div class="w-100">
+                            @Html.EditorFor(model => model.nmicrochip, new { htmlAttributes = new { @class = "form-control w-100 rounded-pill p-2" } })
+                            @Html.ValidationMessageFor(model => model.nmicrochip, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div style="width:calc(100%/3)">
+                    <div class="form-group">
+                        @Html.Label("toggleCheckOwner", "Ha un proprietario", htmlAttributes: new { @class = "control-label fw-semibold" })
+                        <div class="w-100 text-center">
+                            @Html.CheckBox("isProprietario", false, new { id = "toggleCheckOwner" })
+                        </div>
+                    </div>
+                    <div id="proprietarioDiv" style="display:none;">
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(model => model.nomeProprietario, htmlAttributes: new { @class = "control-label fw-semibold pb-2" })
+                            <div class="w-100">
+                                @Html.EditorFor(model => model.nomeProprietario, new { htmlAttributes = new { @class = "form-control w-100 rounded-pill p-2" } })
+                                @Html.ValidationMessageFor(model => model.nomeProprietario, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(model => model.cognomeProprietario, htmlAttributes: new { @class = "control-label fw-semibold pb-2" })
+                            <div class="w-100">
+                                @Html.EditorFor(model => model.cognomeProprietario, new { htmlAttributes = new { @class = "form-control w-100 rounded-pill p-2" } })
+                                @Html.ValidationMessageFor(model => model.cognomeProprietario, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(model => model.codicefiscale, htmlAttributes: new { @class = "control-label fw-semibold pb-2" })
+                            <div class="w-100">
+                                @Html.EditorFor(model => model.codicefiscale, new { htmlAttributes = new { @class = "form-control w-100 rounded-pill p-2" } })
+                                @Html.ValidationMessageFor(model => model.codicefiscale, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:calc(100%/3)">
+                    <div class="form-group">
+                        @Html.Label("toggleCheckSmarrito", "L'animale è smarrito?", new { @class = "control-label fw-semibold" })
+                        <div class="w-100 text-center">
+                            @Html.CheckBox("isSmarrito", false, new { id = "toggleCheckSmarrito"})
+                        </div>
+                    </div>
+
+                    <div id="smarritoDiv" style="display:none;">
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(model => model.datainizioricovero, htmlAttributes: new { @class = "control-label fw-semibold pb-2" })
+                            <div class="w-100">
+                                @Html.EditorFor(model => model.datainizioricovero, new { htmlAttributes = new { @class = "form-control w-100 rounded-pill p-2", type="date" } })
+                                @Html.ValidationMessageFor(model => model.datainizioricovero, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.foto, htmlAttributes: new { @class = "control-label fw-semibold pb-2" })
+                            <div class="w-100">
+                                @Html.EditorFor(model => model.foto, new { htmlAttributes = new { type = "file", @class = "form-control w-100 rounded-pill p-2" } })
+                                @Html.ValidationMessageFor(model => model.foto, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+                        <div class="form-group mt-5">
+                            <div class="w-100 text-center"> 
+                                <input type="submit" value="Aggiungi" class="btn btn-light rounded-pill border-0 w-25 fw-semibold p-2"/>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="position-absolute bottom-0">
+                    <img src="https://www.tinavet.it/images/content/contatti-veterinario-brescia/veterinario-a-domicilio-brescia-verona-desenzano.svg" alt="pet" style="mix-blend-mode:color-burn"/>
+                </div>
+            </div>
 
 @section scripts {
     <script>

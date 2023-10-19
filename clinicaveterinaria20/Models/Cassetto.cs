@@ -17,7 +17,7 @@ namespace clinicaveterinaria20.Models
 
         [Key]
         public int idcassetto { get; set; }
-
+        [Display(Name = "Inserisci il numeri del cassetto")]
         public int? ncassetto { get; set; }
 
         public int? idarmadietto { get; set; }
