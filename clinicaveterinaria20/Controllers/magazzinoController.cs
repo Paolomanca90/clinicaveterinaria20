@@ -102,72 +102,76 @@ namespace clinicaveterinaria20.Controllers
         [HttpPost]
         public ActionResult inserisciprodottoinmagazino(Prodotti p, HttpPostedFileBase foto)
         {
-            if (foto != null && foto.ContentLength > 0)
+            if (ModelState.IsValid)
             {
-                string nomeFile = foto.FileName;
-                string pathToSave = Path.Combine(Server.MapPath("~/Content/img"), nomeFile);
-                foto.SaveAs(pathToSave);
-
-                Prodotti prodotto = database.Prodotti.FirstOrDefault((a) => a.nome == p.nome);
-
-                if (prodotto == null)
+                if (foto != null && foto.ContentLength > 0)
                 {
-                    Armadietti a = database.Armadietti.FirstOrDefault((arm) => p.Cassetto.Armadietti.codice == arm.codice);
-                    if (a != null)
+                    string nomeFile = foto.FileName;
+                    string pathToSave = Path.Combine(Server.MapPath("~/Content/img"), nomeFile);
+                    foto.SaveAs(pathToSave);
+
+                    Prodotti prodotto = database.Prodotti.FirstOrDefault((a) => a.nome == p.nome);
+
+                    if (prodotto == null)
                     {
-                        Cassetto cassetto = database.Cassetto.FirstOrDefault(c => c.ncassetto == p.Cassetto.ncassetto);
-                        if (cassetto != null)
+                        Armadietti a = database.Armadietti.FirstOrDefault((arm) => p.Cassetto.Armadietti.codice == arm.codice);
+                        if (a != null)
                         {
-                            Prodotti pr = database.Prodotti.FirstOrDefault(e => e.idcassetto == p.idcassetto);
-                            if (pr == null)
+                            Cassetto cassetto = database.Cassetto.FirstOrDefault(c => c.ncassetto == p.Cassetto.ncassetto && c.Armadietti.codice == a.codice);
+                            if (cassetto != null)
                             {
-                                Brand brand12 = database.Brand.FirstOrDefault(b => b.nome == p.Brand.nome);
-                                if (brand12 != null)
+                                Prodotti pr = database.Prodotti.FirstOrDefault(e => e.idcassetto == p.idcassetto);
+                                if (pr == null)
                                 {
-                                    Utilizzi utilizzi = database.Utilizzi.FirstOrDefault(u => u.descrizioni == u.descrizioni);
-                                    if (utilizzi == null)
+                                    Brand brand12 = database.Brand.FirstOrDefault(b => b.nome == p.Brand.nome);
+                                    if (brand12 != null)
                                     {
-                                        utilizzi.descrizioni = p.Utilizzi.descrizioni;
-                                        database.Utilizzi.Add(utilizzi);
+                                        Utilizzi utilizzi = database.Utilizzi.FirstOrDefault(u => u.descrizioni == u.descrizioni);
+                                        if (utilizzi == null)
+                                        {
+                                            utilizzi.descrizioni = p.Utilizzi.descrizioni;
+                                            database.Utilizzi.Add(utilizzi);
+                                            database.SaveChanges();
+                                            utilizzi = database.Utilizzi.FirstOrDefault(u => u.descrizioni == u.descrizioni);
+                                        }
+                                        Brand brand = database.Brand.FirstOrDefault(b => b.nome == p.Brand.nome);
+                                        Prodotti prodotti = new Prodotti();
+                                        prodotti.nome = p.nome;
+                                        prodotti.tipologia = p.tipologia;
+                                        prodotti.foto = p.foto;
+                                        prodotti.quantita = p.quantita;
+                                        prodotti.costo = p.costo;
+                                        prodotti.foto = foto.FileName;
+                                        prodotti.idcassetto = cassetto.idcassetto;
+                                        prodotti.idbrand = brand12.idbrand;
+                                        prodotti.idutilizzo = utilizzi.idutilizzo;
+
+                                        database.Prodotti.Add(prodotti);
+
                                         database.SaveChanges();
-                                        utilizzi = database.Utilizzi.FirstOrDefault(u => u.descrizioni == u.descrizioni);
                                     }
-                                    Brand brand = database.Brand.FirstOrDefault(b => b.nome == p.Brand.nome);
-                                    Prodotti prodotti = new Prodotti();
-                                    prodotti.nome = p.nome;
-                                    prodotti.tipologia = p.tipologia;
-                                    prodotti.foto = p.foto;
-                                    prodotti.quantita = p.quantita;
-                                    prodotti.costo = p.costo;
-                                    prodotti.foto = foto.FileName;
-                                    prodotti.idcassetto = cassetto.idcassetto;
-                                    prodotti.idbrand = brand12.idbrand;
-                                    prodotti.idutilizzo = utilizzi.idutilizzo;
-
-                                    database.Prodotti.Add(prodotti);
-
-                                    database.SaveChanges();
+                                    else { ViewBag.errore = "brand non registrato"; }
                                 }
-                                else { ViewBag.errore = "brand non registrato"; }
+                                else { ViewBag.errore = "cassetto occupato"; }
                             }
-                            else { ViewBag.errore = "cassetto occupato"; }
+                            else { ViewBag.errore = "cassetto non presente"; }
                         }
-                        else { ViewBag.errore = "cassetto non presente"; }
+                        else
+                        {
+                            ViewBag.errore = "aramdietto non presente";
+                        }
                     }
                     else
                     {
-                        ViewBag.errore = "aramdietto non presente";
+                        ViewBag.errore = "prodotto gia presente presente";
                     }
                 }
                 else
                 {
-                    ViewBag.errore = "prodotto gia presente presente";
+                    ViewBag.img = "inserire un immaggine";
                 }
             }
-            else
-            {
-                ViewBag.img = "inserire un immaggine";
-            }
+
             return View();
         }
 
@@ -212,14 +216,13 @@ namespace clinicaveterinaria20.Controllers
         public ActionResult EliminaProdotto(int id)
         {
             Prodotti prodotti = database.Prodotti.Find(id);
-            List<Vendita> vendita = database.Vendita.Where((a)=> a.idprodotto == id).ToList();
+            List<Vendita> vendita = database.Vendita.Where((a) => a.idprodotto == id).ToList();
             if (vendita.Count > 0)
             {
                 foreach (var item in vendita)
                 {
-                   database.Vendita.Remove(item);
+                    database.Vendita.Remove(item);
                 }
-               
             }
             database.Prodotti.Remove(prodotti);
             database.SaveChanges();

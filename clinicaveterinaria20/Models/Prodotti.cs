@@ -18,21 +18,31 @@ namespace clinicaveterinaria20.Models
         [Key]
         public int idprodotto { get; set; }
 
+        [Required(ErrorMessage = "campo richiesto")]
         [StringLength(200)]
         [Display(Name = "Inserisci il nome del Prodotto")]
         public string nome { get; set; }
+
+        [Required(ErrorMessage = "campo richiesto")]
         [Display(Name = "Inserisci la tipologia del Prodotto")]
         public bool? tipologia { get; set; }
 
         [StringLength(200)]
         [Display(Name = "Inserisci un'immagine del Prodotto")]
         public string foto { get; set; }
+
+        [Required(ErrorMessage = "campo richiesto")]
         [Display(Name = "Inserisci la quantità del Prodotto")]
         public int? quantita { get; set; }
+
+        [Required(ErrorMessage = "campo richiesto")]
         [Display(Name = "Inserisci il prezzo del Prodotto")]
         public decimal? costo { get; set; }
 
         public int? idcassetto { get; set; }
+
+        [Required(ErrorMessage = "campo richiesto")]
+        public bool invendita { get; set; }
 
         public int? idutilizzo { get; set; }
 

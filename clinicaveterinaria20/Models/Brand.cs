@@ -18,21 +18,18 @@ namespace clinicaveterinaria20.Models
         [Key]
         public int idbrand { get; set; }
 
-        [Required]
-        [Display(Name ="Inserisci il nome del Brand")]
+        [Required(ErrorMessage = "campo richiesto")]
+        [Display(Name = "Inserisci il nome del Brand")]
         public string nome { get; set; }
 
-        [Required]
         [StringLength(11)]
         [Display(Name = "Inserisci la Partita Iva")]
         public string piva { get; set; }
 
-        [Required]
         [StringLength(56)]
         [Display(Name = "Inserisci la Sede Legale del Brand")]
         public string sedelegale { get; set; }
 
-        [Required]
         [StringLength(15)]
         [Display(Name = "Inserisci il recapito telefonico")]
         public string recapito { get; set; }

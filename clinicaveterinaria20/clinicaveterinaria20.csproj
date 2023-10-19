@@ -185,6 +185,10 @@
     <Compile Include="Migrations\202310180953269_rejex.designer.cs">
       <DependentUpon>202310180953269_rejex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310190821583_required colum cassetto.cs" />
+    <Compile Include="Migrations\202310190821583_required colum cassetto.designer.cs">
+      <DependentUpon>202310190821583_required colum cassetto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Animale.cs" />
     <Compile Include="Models\Armadietti.cs" />
@@ -380,6 +384,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310180953269_rejex.resx">
       <DependentUpon>202310180953269_rejex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310190821583_required colum cassetto.resx">
+      <DependentUpon>202310190821583_required colum cassetto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

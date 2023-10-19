@@ -17,6 +17,7 @@ namespace clinicaveterinaria20.Models
 
         [Key]
         public int idutilizzo { get; set; }
+
         [Display(Name = "Inserisci una descrizione")]
         public string descrizioni { get; set; }
 
