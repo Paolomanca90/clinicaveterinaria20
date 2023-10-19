@@ -13,8 +13,58 @@ namespace clinicaveterinaria20.Controllers
 {
     public class magazzinoController : Controller
     {
-        // GET: magazzino
         private Model1 database = new Model1();
+
+        public List<SelectListItem> ListaArmadietti
+        {
+            get
+            {
+                List<SelectListItem> list = new List<SelectListItem>();
+                List<Armadietti> lista = new List<Armadietti>();
+                lista = database.Armadietti.ToList();
+                foreach (Armadietti p in lista)
+                {
+                    SelectListItem item = new SelectListItem { Text = $"{p.codice}", Value = $"{p.idarmadietto}" };
+                    list.Add(item);
+                }
+                return list;
+            }
+        }
+
+        public List<SelectListItem> ListaBrand
+        {
+            get
+            {
+                List<SelectListItem> list = new List<SelectListItem>();
+                List<Brand> lista = new List<Brand>();
+                lista = database.Brand.ToList();
+                foreach (Brand p in lista)
+                {
+                    SelectListItem item = new SelectListItem { Text = $"{p.nome}", Value = $"{p.idbrand}" };
+                    list.Add(item);
+                }
+                return list;
+            }
+        }
+
+        public List<SelectListItem> ListaUtilizzi
+        {
+            get
+            {
+                List<SelectListItem> list = new List<SelectListItem>();
+                List<Utilizzi> lista = new List<Utilizzi>();
+                lista = database.Utilizzi.ToList();
+                foreach (Utilizzi p in lista)
+                {
+                    SelectListItem item = new SelectListItem { Text = $"{p.descrizioni}", Value = $"{p.idutilizzo}" };
+                    list.Add(item);
+                }
+                return list;
+            }
+        }
+
+        // GET: magazzino
+
 
         public ActionResult Index()
         {
@@ -96,6 +146,9 @@ namespace clinicaveterinaria20.Controllers
         [HttpGet]
         public ActionResult inserisciprodottoinmagazino()
         {
+            ViewBag.Armadietti = ListaArmadietti;
+            ViewBag.Brand = ListaBrand;
+            ViewBag.Utlizzi = ListaUtilizzi;
             return View();
         }
 
@@ -107,71 +160,45 @@ namespace clinicaveterinaria20.Controllers
                 if (foto != null && foto.ContentLength > 0)
                 {
                     string nomeFile = foto.FileName;
-                    string pathToSave = Path.Combine(Server.MapPath("~/Content/img"), nomeFile);
+                    string pathToSave = Path.Combine(Server.MapPath("~/Content/img/uploads"), nomeFile);
                     foto.SaveAs(pathToSave);
-
-                    Prodotti prodotto = database.Prodotti.FirstOrDefault((a) => a.nome == p.nome);
-
-                    if (prodotto == null)
-                    {
-                        Armadietti a = database.Armadietti.FirstOrDefault((arm) => p.Cassetto.Armadietti.codice == arm.codice);
-                        if (a != null)
-                        {
-                            Cassetto cassetto = database.Cassetto.FirstOrDefault(c => c.ncassetto == p.Cassetto.ncassetto && c.Armadietti.codice == a.codice);
-                            if (cassetto != null)
-                            {
-                                Prodotti pr = database.Prodotti.FirstOrDefault(e => e.idcassetto == p.idcassetto);
-                                if (pr == null)
-                                {
-                                    Brand brand12 = database.Brand.FirstOrDefault(b => b.nome == p.Brand.nome);
-                                    if (brand12 != null)
-                                    {
-                                        Utilizzi utilizzi = database.Utilizzi.FirstOrDefault(u => u.descrizioni == u.descrizioni);
-                                        if (utilizzi == null)
-                                        {
-                                            utilizzi.descrizioni = p.Utilizzi.descrizioni;
-                                            database.Utilizzi.Add(utilizzi);
-                                            database.SaveChanges();
-                                            utilizzi = database.Utilizzi.FirstOrDefault(u => u.descrizioni == u.descrizioni);
-                                        }
-                                        Brand brand = database.Brand.FirstOrDefault(b => b.nome == p.Brand.nome);
-                                        Prodotti prodotti = new Prodotti();
-                                        prodotti.nome = p.nome;
-                                        prodotti.tipologia = p.tipologia;
-                                        prodotti.foto = p.foto;
-                                        prodotti.quantita = p.quantita;
-                                        prodotti.costo = p.costo;
-                                        prodotti.foto = foto.FileName;
-                                        prodotti.idcassetto = cassetto.idcassetto;
-                                        prodotti.idbrand = brand12.idbrand;
-                                        prodotti.idutilizzo = utilizzi.idutilizzo;
-
-                                        database.Prodotti.Add(prodotti);
-
-                                        database.SaveChanges();
-                                    }
-                                    else { ViewBag.errore = "brand non registrato"; }
-                                }
-                                else { ViewBag.errore = "cassetto occupato"; }
-                            }
-                            else { ViewBag.errore = "cassetto non presente"; }
-                        }
-                        else
-                        {
-                            ViewBag.errore = "aramdietto non presente";
-                        }
-                    }
-                    else
-                    {
-                        ViewBag.errore = "prodotto gia presente presente";
-                    }
                 }
                 else
                 {
-                    ViewBag.img = "inserire un immaggine";
+                    ViewBag.Armadietti = ListaArmadietti;
+                    ViewBag.Brand = ListaBrand;
+                    ViewBag.Utlizzi = ListaUtilizzi;
+                    ViewBag.Errore = "Inserire un'immagine";
+                    return View();
                 }
+                Prodotti prodotto = database.Prodotti.FirstOrDefault((a) => a.nome == p.nome);
+                if(prodotto != null)
+                {
+                    ViewBag.Armadietti = ListaArmadietti;
+                    ViewBag.Brand = ListaBrand;
+                    ViewBag.Utlizzi = ListaUtilizzi;
+                    ViewBag.Errore = "Prodotto già presente";
+                    return View();
+                }
+                Prodotti prod = database.Prodotti.FirstOrDefault(a => a.Cassetto.ncassetto == p.Cassetto.ncassetto && a.Cassetto.idarmadietto == p.Cassetto.idarmadietto);
+                if(prod != null)
+                {
+                    ViewBag.Armadietti = ListaArmadietti;
+                    ViewBag.Brand = ListaBrand;
+                    ViewBag.Utlizzi = ListaUtilizzi;
+                    ViewBag.Errore = "Cassetto già occupato";
+                    return View();
+                }
+                Cassetto c = database.Cassetto.FirstOrDefault(a => a.ncassetto == p.Cassetto.ncassetto && a.idarmadietto == p.Cassetto.idarmadietto);
+                p.idcassetto = c.idcassetto;
+                p.foto = foto.FileName;
+                p.Cassetto = null;
+                database.Prodotti.Add(p);
+                database.SaveChanges();
+                TempData["Successo"] = "Prodotto aggiunto all'elenco";
+                return RedirectToAction("inserisciprodottoinmagazino");
             }
-
+            ViewBag.Errore = "Errore durante la procedura";
             return View();
         }
 
@@ -190,7 +217,7 @@ namespace clinicaveterinaria20.Controllers
                 Armadietti arm = database.Armadietti.FirstOrDefault(e => a.codice == e.codice);
                 if (arm == null)
                 {
-                    int n = a.nCassettti;
+                    int n = 10;
 
                     database.Armadietti.Add(a);
                     database.SaveChanges();
@@ -206,7 +233,7 @@ namespace clinicaveterinaria20.Controllers
                 }
                 else
                 {
-                    ViewBag.errore = "armadietto gia presente";
+                    ViewBag.errore = "Armadietto già presente";
                 }
             }
             return View();
@@ -253,6 +280,25 @@ namespace clinicaveterinaria20.Controllers
                 database.SaveChanges();
             }
             return View(p);
+        }
+
+        public ActionResult AddUtilizzo()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddUtilizzo(Utilizzi u)
+        {
+            if (ModelState.IsValid)
+            {
+                database.Utilizzi.Add(u);
+                database.SaveChanges();
+                ViewBag.Successo = "Nuova voce aggiunta all'elenco";
+                return RedirectToAction("AddUtilizzo");
+            }
+            ViewBag.Errore = "Errore durante la procedura";
+            return View();
         }
     }
 }
