@@ -4,7 +4,7 @@
     ViewBag.Title = "ModificaProdotto";
 }
 
-<h2>ModificaProdotto</h2>
+<h2>Modifica Prodotto</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Prodotti</h4>
+        <h4>Compila i dati del prodotto da aggiungere</h4>
     
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.idprodotto)

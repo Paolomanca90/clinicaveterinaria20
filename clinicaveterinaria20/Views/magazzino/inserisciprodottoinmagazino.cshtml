@@ -5,7 +5,7 @@
     List<int> lista = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 }
 
-<h2>inserisciprodottoinmagazino</h2>
+<h2>Inserisci prodo</h2>
 
 @if (ViewBag.Errore != null)
 {
@@ -98,15 +98,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 ">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Inserisci il prodotto" class="btn btn-light rounded-pill border-0 w-25 fw-semibold p-2" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

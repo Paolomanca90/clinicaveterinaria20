@@ -4,14 +4,14 @@
     ViewBag.Title = "aggiungiArmadio";
 }
 
-<h2>aggiungiArmadio</h2>
+<h2>Aggiungi nuovo armadietto</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Armadietti</h4>
+
     
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -25,15 +25,11 @@
         <div>@ViewBag.errore</div>
         <div class="form-group">
             <div class="col-md-offset-2 ">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Aggiungi" class="btn btn-light rounded-pill border-0 w-25 fw-semibold p-2" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
