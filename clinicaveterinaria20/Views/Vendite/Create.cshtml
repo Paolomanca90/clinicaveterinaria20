@@ -15,7 +15,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+    <div class=" form-horizontal " >
 
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -45,10 +45,15 @@
         <p> @ViewBag.errore</p>
         <div class="form-group">
             <div class="col-md-offset-2 ">
-                <input type="submit" value="Completa vendita" class="btn btnCF" />
+                <input type="submit" value="Completa vendita" class="btn btnCF " style="color: #1e90ff;"/>
+            </div>
             </div>
         </div>
+
+
     </div>
+
+     
 }
 
 @section Scripts {

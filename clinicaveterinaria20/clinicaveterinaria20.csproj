@@ -168,6 +168,7 @@
     <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\magazzinoController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\VenditeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -304,6 +305,7 @@
     <Content Include="Views\magazzino\aggiungiArmadio.cshtml" />
     <Content Include="Views\magazzino\ModificaProdotto.cshtml" />
     <Content Include="Views\magazzino\AddUtilizzo.cshtml" />
+    <Content Include="Views\Register\Register.cshtml" />
     <Content Include="Views\Vendite\EditVendita.cshtml" />
   </ItemGroup>
   <ItemGroup>
