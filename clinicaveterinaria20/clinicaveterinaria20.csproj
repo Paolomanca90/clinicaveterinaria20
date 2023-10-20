@@ -230,11 +230,14 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\footer.css" />
+    <Content Include="Content\img\pet.svg" />
     <Content Include="Content\img\EPIC_PHARMA_ridotto.png" />
     <Content Include="Content\img\pawcare.png" />
+    <Content Include="Content\img\pharmacy.svg" />
     <Content Include="Content\img\uploads\placeholder.jpg" />
     <Content Include="Content\img\uploads\vet-bg.png" />
     <Content Include="Content\img\vectra.jpg" />
+    <Content Include="Content\img\vetimage.svg" />
     <Content Include="Content\listaAnimali.css" />
     <Content Include="Content\nav.css" />
     <Content Include="favicon.ico" />
@@ -306,6 +309,9 @@
     <Content Include="Views\magazzino\ModificaProdotto.cshtml" />
     <Content Include="Views\magazzino\AddUtilizzo.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
+    <Content Include="Views\Animal\Home.cshtml" />
+    <Content Include="Views\Animal\CreateVisit.cshtml" />
+    <Content Include="Views\Vendite\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

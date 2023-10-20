@@ -14,6 +14,10 @@ namespace clinicaveterinaria20.Controllers
         // GET: Vendite
         private Model1 db = new Model1();
 
+        public ActionResult Home()
+        {
+            return View();
+        }
         public List<SelectListItem> ListaProdotti
         {
             get

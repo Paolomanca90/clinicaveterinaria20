@@ -12,6 +12,11 @@ namespace clinicaveterinaria20.Controllers
     public class AnimalController : Controller
     {
         private Model1 db = new Model1();
+
+        public ActionResult Home()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             return View(db.Animale.ToList());
@@ -104,18 +109,59 @@ namespace clinicaveterinaria20.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult MedicalHistory(int id)
+        public ActionResult CreateVisit(int id)
         {
-            Animale animale = db.Animale.Include(a => a.Visita).FirstOrDefault(a => a.idanimale == id);
+            Animale animale = db.Animale.Find(id);
             if (animale == null)
             {
                 return HttpNotFound();
             }
 
             var visiteInOrdineCronologico = animale.Visita.OrderByDescending(v => v.datavisita).ToList();
+            ViewBag.Anamnesi = visiteInOrdineCronologico;
+            ViewBag.NomePaziente = animale.nome;
 
-            return View(visiteInOrdineCronologico);
+            Visita nuovavisita = new Visita
+            {
+                idanimale = id
+            };
+            return View(nuovavisita);
         }
+
+        [HttpPost]
+        public ActionResult CreateVisit(Visita v)
+        {
+            if(ModelState.IsValid)
+            {
+                db.Visita.Add(v);
+                db.SaveChanges();
+
+            ViewBag.Anamnesi = db.Visita.Where(visita => visita.idanimale == v.idanimale)
+            .OrderByDescending(visita => visita.datavisita).ToList();
+            ViewBag.NomePaziente = db.Animale.Find(v.idanimale).nome;
+
+            return View();
+            }
+            ViewBag.Errore = "Impossibile registrare la visita";
+
+            ViewBag.Anamnesi = db.Visita.Where(visita => visita.idanimale == v.idanimale)
+            .OrderByDescending(visita => visita.datavisita).ToList();
+            ViewBag.NomePaziente = db.Animale.Find(v.idanimale).nome;
+            return View(v);
+        }
+
+        //public ActionResult MedicalHistory(int id)
+        //{
+        //    Animale animale = db.Animale.Include(a => a.Visita).FirstOrDefault(a => a.idanimale == id);
+        //    if (animale == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+
+        //    var visiteInOrdineCronologico = animale.Visita.OrderByDescending(v => v.datavisita).ToList();
+
+        //    return View(visiteInOrdineCronologico);
+        //}
 
         public ActionResult SearchByMNumber()
         {
