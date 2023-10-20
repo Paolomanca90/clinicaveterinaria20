@@ -38,7 +38,6 @@ namespace clinicaveterinaria20.Controllers
             {
                 a.microchip = false;
             }
-
             if (string.IsNullOrWhiteSpace(a.nome) && a.datainizioricovero != null)
             {
                 var animalesmarrito = db.Animale
