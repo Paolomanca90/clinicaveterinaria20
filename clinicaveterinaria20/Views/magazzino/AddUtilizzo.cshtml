@@ -4,32 +4,43 @@
     ViewBag.Title = "AddUtilizzo";
 }
 
-<h2>Aggiungi un utilizzo</h2>
+<div>
+    @Html.ActionLink("ᐊ", "Home", null, new { @class = "btn btn-light btn-lg m-4 rounded-pill border-0" })
+</div>
 
+<h2 class="p-5 fw-semibold display-4">Aggiungi utilizzo</h2>
 
-@using (Html.BeginForm()) 
+@if (ViewBag.Errore != null)
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Descrivi l'utilizzo</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.descrizioni, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.descrizioni, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.descrizioni, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-light rounded-pill border-0 w-25 fw-semibold p-2" />
-            </div>
-        </div>
-    </div>
+    <p class="text-center text-danger fs-5 fst-italic p-3">@ViewBag.Errore</p>
 }
+
+<div class="position-relative mb-5">
+    @using (Html.BeginForm("AddUtilizzo", "magazzino", FormMethod.Post, new { @class = "w-50 mx-auto" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group mb-3">
+                @Html.Label("Descrizione", htmlAttributes: new { @class = "control-label fw-semibold pb-2" })
+                <div class="w-100">
+                    @Html.EditorFor(model => model.descrizioni, new { htmlAttributes = new { @class = "form-control w-100 rounded-pill p-2" } })
+                    @Html.ValidationMessageFor(model => model.descrizioni, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group my-5">
+                <div class="w-100 text-center">
+                    <input type="submit" value="Modifica" class="btn btn-light rounded-pill border-0 w-25 fw-semibold p-2 fs-5" />
+                </div>
+            </div>
+        </div>
+    }
+    <div class="position-absolute bottom-0 ms-5" style="z-index:-1;">
+        <img src="~/Content/img/pharmacy.svg" alt="pet" class="w-50" />
+    </div>
+</div>
 
 
 @section Scripts {
