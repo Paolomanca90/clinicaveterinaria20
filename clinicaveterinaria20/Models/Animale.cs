@@ -23,22 +23,22 @@ namespace clinicaveterinaria20.Models
 
         [Required(ErrorMessage = "Campo obbligatorio")]
         [StringLength(20)]
-        [Display(Name = "Inserisci il nome dell'animale")]
+        [Display(Name = "Nome del pet")]
         public string nome { get; set; }
 
         [Required(ErrorMessage = "Campo obbligatorio")]
         [StringLength(20)]
-        [Display(Name = "Inserisci la specie dell'animale")]
+        [Display(Name = "Specie")]
         public string tipo { get; set; }
 
         [Required(ErrorMessage = "Campo obbligatorio")]
         [StringLength(20)]
-        [Display(Name = "Inserisci il colore del mantello")]
+        [Display(Name = "Colore")]
         public string coloreMantello { get; set; }
 
         [Required(ErrorMessage = "Campo obbligatorio")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Inserisci data di nascita dell'animale")]
+        [Display(Name = "Data di nascita [reale o presunta]")]
         public DateTime? dataDinascita { get; set; }
 
         [Required(ErrorMessage = "Campo obbligatorio")]
@@ -46,26 +46,26 @@ namespace clinicaveterinaria20.Models
         public bool? microchip { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Inserisci il numero del microchip")]
+        [Display(Name = "Numero di microchip")]
         public string nmicrochip { get; set; }
 
         [StringLength(20)]
-        [Display(Name = "Inserisci il nome del proprietario")]
+        [Display(Name = "Nome dell'amico umano")]
         public string nomeProprietario { get; set; }
 
         [StringLength(20)]
-        [Display(Name = "Inserisci il cognome del proprietario")]
+        [Display(Name = "Cognome dell'amico umano")]
         public string cognomeProprietario { get; set; }
-        [Display(Name = "Inserisci data di inizio ricovero")]
+        [Display(Name = "Data di inizio ricovero")]
         public DateTime? datainizioricovero { get; set; }
-        [Display(Name = "Inserisci data di fine ricovero")]
+        [Display(Name = "Data di fine ricovero")]
 
         public DateTime? datafinericovero { get; set; }
 
         [StringLength(16)]
-        [Display(Name = "Inserisci il Codice Fiscale del proprietario")]
+        [Display(Name = "Codice Fiscale")]
         public string codicefiscale { get; set; }
-        [Display(Name = "Inserisci la foto dell'animale")]
+        [Display(Name = "Foto del pet")]
 
         public string foto { get; set; }
 
