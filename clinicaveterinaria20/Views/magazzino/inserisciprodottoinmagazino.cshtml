@@ -1,15 +1,11 @@
 ﻿@model clinicaveterinaria20.Models.Prodotti
 
 @{
-    ViewBag.Title = "inserisciprodottoinmagazino";
+    ViewBag.Title = "ModificaProdotto";
     List<int> lista = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 }
 
-<div>
-    @Html.ActionLink("ᐊ", "Home", "Vendite", null, new { @class = "btn btn-light btn-lg m-4 rounded-pill border-0" })
-</div>
-
-<h2>Inserisci prodotto</h2>
+<h2>inserisci prodotto</h2>
 
 @if (ViewBag.Errore != null)
 {
@@ -25,89 +21,90 @@
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
+    <div class="form-horizontal">
 
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.nome, htmlAttributes: new { @class = "control-label " })
-        <div class="">
-            @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.nome, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.idprodotto);
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nome, htmlAttributes: new { @class = "control-label fw-semibold pb-2 " })
+            <div class="">
+                @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "form-control w-100 rounded-pill p-2" } })
+                @Html.ValidationMessageFor(model => model.nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tipologia, htmlAttributes: new { @class = "control-label fw-semibold pb-2" })
+            <div class="">
+                @Html.EditorFor(model => model.tipologia, new { htmlAttributes = new { @class = "form-control w-100 rounded-pill p-2" } })
+                @Html.ValidationMessageFor(model => model.tipologia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.foto, htmlAttributes: new { @class = "control-label fw-semibold pb-2" })
+            <div class="">
+                @Html.TextBoxFor(model => model.foto, new { @class = "form-control w-100 rounded-pill p-2", type = "file", @accept = "image/*" })
+                @Html.ValidationMessageFor(model => model.foto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.quantita, htmlAttributes: new { @class = "control-label fw-semibold pb-2 " })
+            <div class="">
+                @Html.EditorFor(model => model.quantita, new { htmlAttributes = new { @class = "form-control w-100 rounded-pill p-2" } })
+                @Html.ValidationMessageFor(model => model.quantita, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cassetto.idarmadietto, htmlAttributes: new { @class = "control-label fw-semibold pb-2 " })
+            <div class="">
+                @Html.DropDownListFor(model => model.Cassetto.idarmadietto, new SelectList(ViewBag.Armadietti, "Value", "Text"), new { @class = "form-control w-100 rounded-pill p-2" })
+                @Html.ValidationMessageFor(model => model.Cassetto.idarmadietto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.costo, htmlAttributes: new { @class = "control-label fw-semibold pb-2 " })
+            <div class="">
+                @Html.EditorFor(model => model.costo, new { htmlAttributes = new { @class = "form-control w-100 rounded-pill p-2" } })
+                @Html.ValidationMessageFor(model => model.costo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cassetto.ncassetto, htmlAttributes: new { @class = "control-label fw-semibold pb-2 " })
+            <div class="">
+                @Html.DropDownListFor(model => model.Cassetto.ncassetto, new SelectList(lista), new { @class = "form-control w-100 rounded-pill p-2" })
+                @Html.ValidationMessageFor(model => model.Cassetto.ncassetto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.idutilizzo, htmlAttributes: new { @class = "control-label fw-semibold pb-2 " })
+            <div class="">
+                @Html.DropDownListFor(model => model.idutilizzo, new SelectList(ViewBag.Utlizzi, "Value", "Text"), new { @class = "form-control w-100 rounded-pill p-2" })
+                @Html.ValidationMessageFor(model => model.idutilizzo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.idbrand, htmlAttributes: new { @class = "control-label fw-semibold pb-2 " })
+            <div class="">
+                @Html.DropDownListFor(model => model.idbrand, new SelectList(ViewBag.Brand, "Value", "Text"), new { @class = "form-control w-100 rounded-pill p-2" })
+                @Html.ValidationMessageFor(model => model.idbrand, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group my-5">
+            <div class="w-100 text-center">
+                <input type="submit" value="Inserisci" class="btn btn-light rounded-pill border-0 w-25 fw-semibold p-2 fs-5" />
+            </div>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.tipologia, htmlAttributes: new { @class = "control-label " })
-        <div class="">
-            @Html.EditorFor(model => model.tipologia, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.tipologia, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.foto, htmlAttributes: new { @class = "control-label " })
-        <div class="">
-            @Html.TextBoxFor(model => model.foto, new { @class = "form-control", type = "file", @accept = "image/*" })
-            @Html.ValidationMessageFor(model => model.foto, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.quantita, htmlAttributes: new { @class = "control-label " })
-        <div class="">
-            @Html.EditorFor(model => model.quantita, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.quantita, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Cassetto.idarmadietto, htmlAttributes: new { @class = "control-label " })
-        <div class="">
-            @Html.DropDownListFor(model => model.Cassetto.idarmadietto, new SelectList(ViewBag.Armadietti, "Value", "Text"), "- Seleziona armadietto -", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Cassetto.idarmadietto, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.costo, htmlAttributes: new { @class = "control-label " })
-        <div class="">
-            @Html.EditorFor(model => model.costo, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.costo, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Cassetto.ncassetto, htmlAttributes: new { @class = "control-label " })
-        <div class="">
-            @Html.DropDownListFor(model => model.Cassetto.ncassetto, new SelectList(lista), "- Seleziona un cassetto -", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Cassetto.ncassetto, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.idutilizzo, htmlAttributes: new { @class = "control-label " })
-        <div class="">
-            @Html.DropDownListFor(model => model.idutilizzo, new SelectList(ViewBag.Utlizzi, "Value", "Text"), "- Seleziona utilizzo -", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.idutilizzo, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.idbrand, htmlAttributes: new { @class = "control-label " })
-        <div class="">
-            @Html.DropDownListFor(model => model.idbrand, new SelectList(ViewBag.Brand, "Value", "Text"), "- Seleziona azienda -", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.idbrand, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 ">
-            <input type="submit" value="Aggiungi" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
