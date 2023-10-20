@@ -157,7 +157,8 @@ namespace clinicaveterinaria20.Controllers
             {
                 db.Visita.Add(v);
                 db.SaveChanges();
-
+                ModelState.Clear();
+                ViewBag.Successo = "Visita aggiunta all'elenco";
             ViewBag.Anamnesi = db.Visita.Where(visita => visita.idanimale == v.idanimale)
             .OrderByDescending(visita => visita.datavisita).ToList();
             ViewBag.NomePaziente = db.Animale.Find(v.idanimale).nome;

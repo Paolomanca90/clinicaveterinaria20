@@ -15,6 +15,11 @@
 
 <h2 class="p-5 fw-semibold display-4">Modifica anagrafica</h2>
 
+@if (ViewBag.Errore != null)
+{
+    <p class="text-center text-danger fs-5 fst-italic p-3">@ViewBag.Errore</p>
+}
+
 <div class="position-relative pb-5">
     @using (Html.BeginForm("Edit", "Animal", FormMethod.Post, new { enctype = "multipart/form-data", @class = "w-50 mx-auto" }))
     {
