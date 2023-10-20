@@ -4,8 +4,14 @@
     ViewBag.Title = "ModificaProdotto";
     List<int> lista = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 }
+<style>
+    #prodMag{
+        text-align:center;
+        margin-bottom:5px;
+    }
+</style>
 
-<h2>inserisci prodotto</h2>
+<h2 id="prodMag">Inserisci Prodotto</h2>
 
 @if (ViewBag.Errore != null)
 {
