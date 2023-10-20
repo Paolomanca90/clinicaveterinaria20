@@ -13,28 +13,28 @@
 }
 
 <div>
-    @Html.ActionLink("ᐊ", "Home", "Animal", null, new { @class = "btn btn-light btn-lg m-4 rounded-pill border-0" })
+    @Html.ActionLink("ᐊ", "Index", "Animal", null, new { @class = "btn btn-light btn-lg m-4 rounded-pill border-0" })
 </div>
 
 <h2 class="p-5 fw-semibold display-4">Elenco delle visite</h2>
 
 <div class="position-relative">
     <p class="text-center px-5 fs-1">
-        @Html.ActionLink("Create New", "Create", null, new { @class = "text-light text-decoration-underline" })
+        @Html.ActionLink("Nuova visita", "Create", null, new { @class = "btn btn-light rounded-pill px-5 fs-4 border-0" })
     </p>
     <table class="table w-75 mx-auto my-5">
         <tr class="fs-4">
             <th>
-                @Html.DisplayNameFor(model => model.Animale.nome)
+                Nome dell'animale
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.datavisita)
+                Data visita
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.esame)
+                Esame obiettivo
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.cura)
+                Descrizione cura
             </th>
             <th>
                 Modifica

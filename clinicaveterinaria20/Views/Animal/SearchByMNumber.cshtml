@@ -11,49 +11,57 @@
 
 <div id="errore" style="display:none;" class="text-center text-danger fs-5 fst-italic p-3">Nessun animale trovato con il numero di microchip inserito.</div>
 
-<div class="d-flex flex-column align-items-center flex-grow-1 w-50 mx-auto py-5 my-5">
-    <label for="nmicrochipInput" class="control-label fw-semibold pb-5">Inserire numero di microchip</label>
-    <input id="nmicrochipInput" class="form-control w-100 rounded-pill p-2 mb-5" type="text" />
-    <button id="bottone" class="btn btn-light rounded-pill border-0 w-25 fw-semibold px-5 py-2 fs-5 mb-5">Cerca</button>
-    <div id="risultati" style="display:none;">
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="" alt="Immagine">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text"></p>
+<div class="position-relative mb-5">
+    <div class="d-flex flex-column align-items-center flex-grow-1 w-50 mx-auto py-5 my-5">
+        <label for="nmicrochipInput" class="control-label fw-semibold pb-5">Inserire numero di microchip</label>
+        <input id="nmicrochipInput" class="form-control w-100 rounded-pill p-2 mb-5" type="text" />
+        <button id="bottone" class="btn btn-light rounded-pill border-0 w-25 fw-semibold px-5 py-2 fs-5 mb-5">Cerca</button>
+        <div id="risultati" style="display:none;">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="" alt="Immagine">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text"></p>
+                </div>
             </div>
         </div>
+    </div>
+    <div class="position-absolute bottom-0 opacity-50" style="z-index:-1; right:15%">
+        <img src="~/Content/img/pet.svg" alt="Alternate Text" style="width: 150%"/>
     </div>
 </div>
 
 
 
 
+    @section scripts{
+        <script>
+            $(document).ready(function () {
+                $("#bottone").click(function () {
+                    let numero = $("#nmicrochipInput").val()
+                    $("#errore").hide()
+                    $("#risultati").hide()
+                    $.ajax({
+                        type: "POST",
+                        url: "SearchByMNumber",
+                        data: { nmicrochip: numero },
+                        success: function (data) {
+                            if (numero != "") {
+                                $("#risultati").show()
+                                $(".card-img-top").attr("src", `/Content/img/uploads/${data.foto}`)
+                                $(".card-title").html(data.nome)
+                                $(".card-text").html(`${data.tipo} di colore ${data.coloreMantello}`)
+                            }
+                            else {
+                                $("#errore").show()
+                            }
+                        },
+                        error: function () {
+                            $("#errore").show()
+                        }
 
-@section scripts{
-    <script>
-        $(document).ready(function () {
-            $("#bottone").click(function () {
-                let numero = $("#nmicrochipInput").val()
-                $("#errore").hide()
-                $("#risultati").hide()
-                $.ajax({
-                    type: "POST",
-                    url: "SearchByMNumber",
-                    data: { nmicrochip: numero },
-                    success: function (data) {
-
-                        $("#risultati").show()
-                        $(".card-img-top").attr("src", `/Content/img/uploads/${data.foto}`)
-                        $(".card-title").html(data.nome)
-                        $(".card-text").html(`${data.tipo} di colore ${data.coloreMantello}`)
-                    },
-                    error: function () {
-                        $("#errore").show()
-                    }
-
+                    })
                 })
             })
-        })
-    </script>
-}
+        </script>
+    }
