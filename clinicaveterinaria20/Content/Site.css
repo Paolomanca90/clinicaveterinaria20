@@ -139,5 +139,8 @@ body, p, h1, h2, h3, h4, h5, span, a, button, div, input, label {
     background: rgb(157,200,255);
     background: linear-gradient(90deg, rgba(157,200,255,1) 55%, rgba(255,255,255,1) 100%);
 }
+.img-magazzino{
+    width:100px;
+}
 
 
