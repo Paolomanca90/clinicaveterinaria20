@@ -134,10 +134,12 @@ namespace clinicaveterinaria20.Controllers
                 {
                     database.Brand.Add(b);
                     database.SaveChanges();
+                    return RedirectToAction("aggiugiAziende");
                 }
                 else
                 {
                     ViewBag.errore = "azienda gia presente";
+                    return View();
                 }
             }
             return View();
@@ -227,6 +229,7 @@ namespace clinicaveterinaria20.Controllers
                         database.Cassetto.Add(cassetto);
                         database.SaveChanges();
                     }
+                    return RedirectToAction("aggiungiArmadio");
                 }
                 else
                 {
@@ -275,7 +278,7 @@ namespace clinicaveterinaria20.Controllers
                     p.foto = prodotto.foto;
                 }
 
-                if(p.Cassetto.ncassetto == prodotto.Cassetto.ncassetto)
+                if (p.Cassetto.ncassetto == prodotto.Cassetto.ncassetto)
                 {
                     p.idcassetto = prodotto.idcassetto;
                 }
