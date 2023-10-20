@@ -4,54 +4,58 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>Sei sicuro di voler rimuovere i dati di questa visita?</h3>
 <div>
-    <h4>Visita</h4>
+    @Html.ActionLink("ᐊ", "Index", "Animal", null, new { @class = "btn btn-light btn-lg m-4 rounded-pill border-0" })
+</div>
 
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Animale.nome)
+<h2 class="p-5 fw-semibold display-4">Sei sicuro di voler rimuovere questa visita?</h2>
+<div class="w-75 mx-auto d-flex align-items-center">
+    <dl class="dl-horizontal w-50 m-0 text-center d-flex flex-column justify-content-center align-items-center">
+        <dt class="control-label pb-2">
+            Nome dell'animale
         </dt>
 
-        <dd>
+        <dd class="fs-5 fst-italic">
             @Html.DisplayFor(model => model.Animale.nome)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.datavisita)
+        <dt class="control-label pb-2">
+            Data visita
         </dt>
 
-        <dd>
+        <dd class="fs-5 fst-italic">
             @Html.DisplayFor(model => model.datavisita)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.esame)
+        <dt class="control-label pb-2">
+            Esame obiettivo
         </dt>
 
-        <dd>
+        <dd class="fs-5 fst-italic">
             @Html.DisplayFor(model => model.esame)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.cura)
+        <dt class="control-label pb-2">
+            Descrizione cura
         </dt>
 
-        <dd>
+        <dd class="fs-5 fst-italic">
             @Html.DisplayFor(model => model.cura)
         </dd>
-
     </dl>
+    <div class="w-50">
+        <img src="~/Content/img/stetovet.svg" class="w-75 rounded-5">
+    </div>
+</div>
 
+<div class="text-center py-5">
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Elimina" class="btn btn-light rounded-pill border-0 w-25 fw-semibold p-2 fs-5 me-5" />
+            @Html.ActionLink("Annulla", "Index", null, new { @class = "btn btn-light rounded-pill border-0 w-25 fw-semibold p-2 fs-5" })
         </div>
     }
 </div>

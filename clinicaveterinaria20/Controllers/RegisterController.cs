@@ -31,7 +31,7 @@ namespace clinicaveterinaria20.Controllers
                 ViewBag.Errore = "Utente presente nel database";
             }
 
-            return View();
+            return RedirectToAction("Login","Home");
         }
     }
 }

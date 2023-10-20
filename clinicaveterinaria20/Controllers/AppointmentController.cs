@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace clinicaveterinaria20.Controllers
 {
+    [Authorize(Roles = "Veterinario")]
     public class AppointmentController : Controller
     {
         private Model1 db = new Model1();
