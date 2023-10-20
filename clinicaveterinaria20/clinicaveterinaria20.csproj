@@ -239,6 +239,7 @@
     <Content Include="Content\img\login.png" />
     <Content Include="Content\img\pawcare.png" />
     <Content Include="Content\img\pharmacy.svg" />
+    <Content Include="Content\img\stetovet.svg" />
     <Content Include="Content\img\rabbit.jpg" />
     <Content Include="Content\img\uploads\placeholder.jpg" />
     <Content Include="Content\img\uploads\vet-bg.png" />
