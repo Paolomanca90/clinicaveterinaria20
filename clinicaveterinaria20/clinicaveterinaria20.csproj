@@ -231,6 +231,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\footer.css" />
     <Content Include="Content\img\EPIC_PHARMA_ridotto.png" />
+    <Content Include="Content\img\login.png" />
     <Content Include="Content\img\pawcare.png" />
     <Content Include="Content\img\uploads\placeholder.jpg" />
     <Content Include="Content\img\uploads\vet-bg.png" />
@@ -307,6 +308,7 @@
     <Content Include="Views\magazzino\AddUtilizzo.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
     <Content Include="Views\Vendite\EditVendita.cshtml" />
+    <Content Include="Views\Home\login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

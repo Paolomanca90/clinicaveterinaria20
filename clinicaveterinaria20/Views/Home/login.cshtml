@@ -1,7 +1,7 @@
 ﻿@model clinicaveterinaria20.Models.Utente
 
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "login";
 }
 
 @section styles{
@@ -13,7 +13,7 @@
     </style>
 }
 
-<h2 class="p-5 fw-semibold display-4">Registrazione nuovo utente</h2>
+<h2 class="p-5 fw-semibold display-4">Login</h2>
 
 <div>
     @if (ViewBag.Errore != null)
@@ -23,7 +23,7 @@
 </div>
 
 <div class="position-relative pb-5">
-    @using (Html.BeginForm("Register", "Register", FormMethod.Post, new { @class = "w-50 mx-auto my-5" }))
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "w-50 mx-auto my-5" }))
     {
         @Html.AntiForgeryToken()
 
@@ -46,21 +46,6 @@
                 </div>
             </div>
 
-            <div class="form-group mb-3">
-                @Html.LabelFor(model => model.role, htmlAttributes: new { @class = "control-label fw-semibold pb-2" })
-                <div class="col-12 d-flex">
-                    <div class="col-6 text-center">
-                        <label class="control-label fw-semibold">Veterinario</label>
-                        @Html.RadioButtonFor(model => model.role, "Veterinario", new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                    <div class="col-6 text-center">
-                        <label class="control-label fw-semibold">Farmacista</label>
-                        @Html.RadioButtonFor(model => model.role, "Farmacista", new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                    @Html.ValidationMessageFor(model => model.role, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
             <div class="form-group mt-5">
                 <div class="w-100 text-center">
                     <input type="submit" value="Registra" class="btn btn-light rounded-pill border-0 w-25 fw-semibold p-2 fs-5" />
@@ -73,3 +58,7 @@
     </div>
 </div>
 
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
