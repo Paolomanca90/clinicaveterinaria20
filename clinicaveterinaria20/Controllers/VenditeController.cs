@@ -48,7 +48,7 @@ namespace clinicaveterinaria20.Controllers
             if (ModelState.IsValid)
             {
                 Cliente comp = db.Cliente.FirstOrDefault(m => m.codicefiscale == cliente.codicefiscale);
-                if (comp == null)
+                if (comp == null && cliente.codicefiscale == "")
                 {
                     db.Cliente.Add(cliente);
                     db.SaveChanges();
@@ -198,7 +198,7 @@ namespace clinicaveterinaria20.Controllers
             {
                 DateTime dat = Convert.ToDateTime(pippo);
 
-                List<Vendita> json = db.Vendita.Where(m => m.datavendita == dat).ToList();
+                List<Vendita> json = db.Vendita.Where(m => DbFunctions.TruncateTime(m.datavendita) == dat).ToList();
                 if (json.Count > 0)
                 {
                     foreach (Vendita vendita in json)
