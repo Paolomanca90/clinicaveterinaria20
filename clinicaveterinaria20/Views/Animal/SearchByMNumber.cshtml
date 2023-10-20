@@ -7,8 +7,9 @@
     @Html.ActionLink("ᐊ", "Home", null, new { @class = "btn btn-light btn-lg m-4 rounded-pill border-0" })
 </div>
 
-<h2>Ricerca per microchip</h2>
 <h2 class="p-5 fw-semibold display-4">Ricerca per microchip</h2>
+
+<div id="errore" style="display:none;" class="text-center text-danger fs-5 fst-italic p-3">Nessun animale trovato con il numero di microchip inserito.</div>
 
 <div class="d-flex flex-column align-items-center flex-grow-1 w-50 mx-auto py-5 my-5">
     <label for="nmicrochipInput" class="control-label fw-semibold pb-5">Inserire numero di microchip</label>
@@ -23,8 +24,6 @@
             </div>
         </div>
     </div>
-
-    <div id="errore" style="display:none;">Nessun animale trovato con il numero di microchip inserito.</div>
 </div>
 
 
@@ -33,7 +32,7 @@
 
 @section scripts{
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $("#bottone").click(function () {
                 let numero = $("#nmicrochipInput").val()
                 $("#errore").hide()
@@ -49,12 +48,12 @@
                         $(".card-title").html(data.nome)
                         $(".card-text").html(`${data.tipo} di colore ${data.coloreMantello}`)
                     },
-                    error: function(){
+                    error: function () {
                         $("#errore").show()
                     }
-                    
+
                 })
             })
         })
     </script>
-    }
+}
