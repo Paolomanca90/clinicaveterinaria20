@@ -25,6 +25,11 @@
     <p class="text-center text-danger fs-5 fst-italic p-3">@ViewBag.Errore</p>
 }
 
+@if (TempData["successo"] != null)
+{
+    <p class="text-center text-primary fs-5 fst-italic p-3">@TempData["successo"]</p>
+}
+
 <div class="position-relative mb-5">
     @using (Html.BeginForm("aggiungiArmadio", "magazzino", FormMethod.Post, new { @class = "w-50 mx-auto" }))
     {

@@ -13,14 +13,14 @@
 }
 
 <div>
-    @Html.ActionLink("ᐊ", "Index", "Animal", null, new { @class = "btn btn-light btn-lg m-4 rounded-pill border-0" })
+    @Html.ActionLink("ᐊ", "Home", "Animal", null, new { @class = "btn btn-light btn-lg m-4 rounded-pill border-0" })
 </div>
 
-<h2>Index</h2>
+<h2 class="p-5 fw-semibold display-4">Elenco delle visite</h2>
 
 <div class="position-relative">
     <p class="text-center px-5 fs-1">
-        @Html.ActionLink("Nuova visita", "Create", null, new { @class = "btn btn-light rounded-pill px-5 fs-4 border-0" })
+        @Html.ActionLink("Nuova visita", "Create", null, new { @class = "btn btn-light rounded-pill px-5 fs-4 border-0 shadow-lg" })
     </p>
     <table class="table w-75 mx-auto my-5">
         <tr class="fs-4">
@@ -60,8 +60,10 @@
                 @Html.DisplayFor(modelItem => item.cura)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idvisita }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.idvisita })
+                <a href="~/Appointment/Edit/@item.idvisita"><i class="fa fa-edit"></i></a>
+            </td>
+            <td>
+                <a href="~/Appointment/Delete/@item.idvisita"><i class="fa fa-trash"></i></a>
             </td>
         </tr>
     }

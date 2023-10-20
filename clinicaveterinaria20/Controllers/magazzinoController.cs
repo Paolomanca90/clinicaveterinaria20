@@ -135,11 +135,12 @@ namespace clinicaveterinaria20.Controllers
                 {
                     database.Brand.Add(b);
                     database.SaveChanges();
+                    TempData["successo"] = "Azienda aggiunta all'elenco";
                     return RedirectToAction("aggiugiAziende");
                 }
                 else
                 {
-                    ViewBag.errore = "azienda gia presente";
+                    ViewBag.errore = "Azienda gia' presente";
                     return View();
                 }
             }
@@ -230,6 +231,7 @@ namespace clinicaveterinaria20.Controllers
                         database.Cassetto.Add(cassetto);
                         database.SaveChanges();
                     }
+                    TempData["successo"] = "Armadio aggiunto all'elenco";
                     return RedirectToAction("aggiungiArmadio");
                 }
                 else
@@ -319,7 +321,7 @@ namespace clinicaveterinaria20.Controllers
             {
                 database.Utilizzi.Add(u);
                 database.SaveChanges();
-                ViewBag.Successo = "Nuova voce aggiunta all'elenco";
+                TempData["successo"] = "Nuova voce aggiunta all'elenco";
                 return RedirectToAction("AddUtilizzo");
             }
             ViewBag.Errore = "Errore durante la procedura";

@@ -11,7 +11,7 @@
                     console.log(e)
                     let p = ""
                     if (e.nome == "prodotto insesistente") {
-                        p = `<p> prodotto insesistente </p>`
+                        p = `<p> Prodotto insesistente </p>`
                     }
                     else {
                         $("#tabellaProdotti").show()
@@ -41,7 +41,7 @@
                 <td>
                 ${e.casetto}
            
-                    modello.armadietto
+ 
                  
                 </td>
                 <td>
@@ -74,7 +74,7 @@
                 <td>
                 ${e.casetto}
            
-                    modello.armadietto
+                    
                  
                 </td>
                 <td>

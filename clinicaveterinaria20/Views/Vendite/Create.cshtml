@@ -6,10 +6,6 @@
 }
 
 
-@if (ViewBag.Errore != null)
-{
-    <p class="text-center text-danger fs-5 fst-italic p-3">@ViewBag.Errore</p>
-}
 <style>
     #createRicetta {
         border-radius: 100px;
@@ -39,10 +35,15 @@
 
 <h2 class="p-5 fw-semibold display-4">Nuova vendita</h2>
 
-@if (ViewBag.Errore != null)
+@if (ViewBag.errore != null)
 {
     <p class="text-center text-danger fs-5 fst-italic p-3">@ViewBag.Errore</p>
 }
+@if (TempData["Successo"] != null)
+{
+    <p class="text-center text-primary fs-5 fst-italic p-3">@TempData["Successo"]</p>
+}
+
 
 @using (Html.BeginForm("Create", "Vendite", FormMethod.Post, new { @class = "w-50 mx-auto my-5" }))
 {

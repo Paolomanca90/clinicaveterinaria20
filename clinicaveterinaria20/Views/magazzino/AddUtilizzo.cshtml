@@ -5,7 +5,7 @@
 }
 
 <div>
-    @Html.ActionLink("ᐊ", "Home", null, new { @class = "btn btn-light btn-lg m-4 rounded-pill border-0" })
+    @Html.ActionLink("ᐊ", "Home","Vendite", null, new { @class = "btn btn-light btn-lg m-4 rounded-pill border-0" })
 </div>
 
 <h2 class="p-5 fw-semibold display-4">Aggiungi utilizzo</h2>
@@ -13,6 +13,11 @@
 @if (ViewBag.Errore != null)
 {
     <p class="text-center text-danger fs-5 fst-italic p-3">@ViewBag.Errore</p>
+}
+
+@if (TempData["successo"] != null)
+{
+    <p class="text-center text-primary fs-5 fst-italic p-3">@TempData["successo"]</p>
 }
 
 <div class="position-relative mb-5">
@@ -32,7 +37,7 @@
 
             <div class="form-group my-5">
                 <div class="w-100 text-center">
-                    <input type="submit" value="Modifica" class="btn btn-light rounded-pill border-0 w-25 fw-semibold p-2 fs-5" />
+                    <input type="submit" value="Aggiungi" class="btn btn-light rounded-pill border-0 w-25 fw-semibold p-2 fs-5" />
                 </div>
             </div>
         </div>

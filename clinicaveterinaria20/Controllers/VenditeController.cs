@@ -95,12 +95,10 @@ namespace clinicaveterinaria20.Controllers
             Prodotti prodotto = database.Prodotti.Find(vd.idprodotto);
             if (prodotto.quantita < vd.quantita)
             {
-                ViewBag.errore = "attualmente non è presente il numero di articoli richiesti sono presenti " + prodotto.quantita;
+                ViewBag.errore = "Il numero di pezzi richiesto è superiore alla disponibilità";
                 ViewBag.Prodotti = ListaProdotti;
                 return View();
             }
-            else
-            {
                 vd.costotot = vd.quantita * prodotto.costo;
                 vd.idcliente = (int)Session["idCliente"];
                 database.Vendita.Add(vd);
@@ -109,7 +107,7 @@ namespace clinicaveterinaria20.Controllers
                 prodotti1.quantita -= vd.quantita;
                 database.Entry(prodotti1).State = EntityState.Modified;
                 database.SaveChanges();
-            }
+            TempData["Successo"] = "Vendita completata";
 
             return RedirectToAction("Create");
         }

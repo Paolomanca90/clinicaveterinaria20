@@ -17,15 +17,54 @@
 <div class="d-flex flex-column w-50 mx-auto align-items-center my-5">
 
 
-        <input type="text" id="cf" placeholder="Inserisci il codice fiscale del cliente" class = "form-control w-100 rounded-pill p-2" />
-        <input type="button" id="btn1" value="Avvia ricerca per CF" class="btn btn-light rounded-pill border-0 w-25 fw-semibold p-2 fs-5" />
-        <input type="date" id="input-data" class = "form-control w-100 rounded-pill p-2"/>
-        <input type="button" id="btn2" value="Avvia ricerca per data" class="btn btn-light rounded-pill border-0 w-25 fw-semibold p-2 fs-5"/>
+    <input type="text" id="cf" placeholder="Inserisci il codice fiscale del cliente" class="form-control w-100 rounded-pill p-2" />
+    <input type="button" id="btn1" value="Avvia ricerca per CF" class="btn btn-light rounded-pill border-0 w-25 fw-semibold p-2 fs-5" />
+    <input type="date" id="input-data" class="form-control w-100 rounded-pill p-2" />
+    <input type="button" id="btn2" value="Avvia ricerca per data" class="btn btn-light rounded-pill border-0 w-25 fw-semibold p-2 fs-5" />
 
+    <table id="list-cf" class="table w-75 mx-auto my-5" style="display:none">
+        <thead class="fs-4">
+            <tr>
+                <th>N. Ricetta</th>
+                <th>
+                    Quantità
+                </th>
+                <th>
+                    Costo
+                </th>
+                <th>
+                    Modifica
+                </th>
+                <th>
+                    Elimina
+                </th>
+            </tr>
+        </thead>
+        <tbody id="trCf" class="fst-italic fs-5">
+        </tbody>
+    </table>
 
-        <ul id="list-cf"></ul>
-
-        <ul id="list-data"></ul>
+    <table id="list-data" class="table w-75 mx-auto my-5" style="display:none">
+        <thead class="fs-4">
+            <tr>
+                <th>N. Ricetta</th>
+                <th>
+                    Quantità
+                </th>
+                <th>
+                    Costo
+                </th>
+                <th>
+                    Modifica
+                </th>
+                <th>
+                    Elimina
+                </th>
+            </tr>
+        </thead>
+        <tbody id="trData" class="fst-italic fs-5">
+        </tbody>
+    </table>
 
 </div>
 
