@@ -140,7 +140,22 @@ body, p, h1, h2, h3, h4, h5, span, a, button, div, input, label {
     background: linear-gradient(90deg, rgba(157,200,255,1) 55%, rgba(255,255,255,1) 100%);
 }
 .img-magazzino{
-    width:100px;
+    width:60px;
 }
 
 
+/*link magazzino*/
+
+
+#div a {
+    text-decoration: none;
+    color: #1e90ff;
+    font-size: 1.4em;
+    font-weight:bold;
+}
+
+
+#div a:hover{
+    font-size:2em;
+    color:#31afff;
+}
