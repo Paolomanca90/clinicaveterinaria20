@@ -10,12 +10,34 @@
 {
     <p class="text-center text-danger fs-5 fst-italic p-3">@ViewBag.Errore</p>
 }
+<style>
+    #createRicetta {
+        border-radius: 100px;
+        color: #1e90ff;
+    }
+
+    #createQuantita {
+        color: #1e90ff;
+        border-radius: 100px;
+        font-size: 20px;
+    }
+
+    #createVendita {
+        border-radius: 100px;
+        margin-bottom: 10px;
+    }
+
+    #Prodotto {
+        font-size: 20px;
+        margin-left: 80px;
+    }
+</style>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class=" form-horizontal " >
+    <div class=" form-horizontal ">
 
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -23,15 +45,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.nricetta, htmlAttributes: new { @class = "control-label" })
             <div class="">
-                @Html.EditorFor(model => model.nricetta, new { htmlAttributes = new { @class = "form-control inputCF" } })
+                @Html.EditorFor(model => model.nricetta, new { htmlAttributes = new { @class = "form-control inputCF", id = "createRicetta" } })
                 @Html.ValidationMessageFor(model => model.nricetta, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.quantita, htmlAttributes: new { @class = "control-label" })
+            @Html.LabelFor(model => model.quantita, htmlAttributes: new { @class = "control-label", })
             <div class="">
-                @Html.EditorFor(model => model.quantita, new { htmlAttributes = new { @class = "form-control inputCF quantity" } })
+                @Html.EditorFor(model => model.quantita, new { htmlAttributes = new { @class = "form-control inputCF quantity", id = "createQuantita" } })
                 @Html.ValidationMessageFor(model => model.quantita, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -45,18 +67,18 @@
         <p> @ViewBag.errore</p>
         <div class="form-group">
             <div class="col-md-offset-2 ">
-                <input type="submit" value="Completa vendita" class="btn btnCF " style="color: #1e90ff;"/>
-            </div>
+                <input type="submit" value="Completa vendita" class="btn btnCF " id="createVendita" />
             </div>
         </div>
-
-
     </div>
 
-     
+
+
 }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
 }
+
+
