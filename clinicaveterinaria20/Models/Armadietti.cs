@@ -23,7 +23,7 @@ namespace clinicaveterinaria20.Models
         [Required(ErrorMessage = "campo obligatorio")]
         public int nCassettti { get; set; }
 
-        [Display(Name = "inserire codice del armadietto")]
+        [Display(Name = "Codice Armadietto")]
         [Required(ErrorMessage = "campo obligatorio")]
         public string codice { get; set; }
 
