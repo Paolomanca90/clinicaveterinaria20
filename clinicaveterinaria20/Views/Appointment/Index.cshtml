@@ -4,6 +4,14 @@
     ViewBag.Title = "Index";
 }
 
+@section styles{
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+    </style>
+}
+
 <div>
     @Html.ActionLink("ᐊ", "Home", "Animal", null, new { @class = "btn btn-light btn-lg m-4 rounded-pill border-0" })
 </div>
