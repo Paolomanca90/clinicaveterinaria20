@@ -100,6 +100,10 @@
     font-size: 17px;
 }
 
+#arrow {
+    border: none!important;
+}
+
 .btn {
     cursor: pointer;
     position: relative;

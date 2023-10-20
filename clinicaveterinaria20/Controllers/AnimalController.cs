@@ -38,8 +38,31 @@ namespace clinicaveterinaria20.Controllers
             {
                 a.microchip = false;
             }
-            //if (ModelState.IsValid)
-            //{
+
+            if (string.IsNullOrWhiteSpace(a.nome) && a.datainizioricovero != null)
+            {
+                var animalesmarrito = db.Animale
+                    .Where(an => an.nome.StartsWith("animalesmarrito"))
+                    .ToList();
+
+                if (animalesmarrito.Any())
+                {
+                    int maxNanimalesmarrito = animalesmarrito
+                        .Select(an => int.TryParse(an.nome.Replace("animalesmarrito", ""), out var result) ? result : 0)
+                        .Max();
+
+                    a.nome = "animalesmarrito" + (maxNanimalesmarrito + 1);
+                }
+                else
+                {
+                    a.nome = "animalesmarrito1";
+                }
+            }
+
+            ModelState.Remove("microchip");
+            ModelState.Remove("nome");
+            if (ModelState.IsValid)
+            {
                 if (foto != null && foto.ContentLength > 0)
                 {
                     string fileName = Path.GetFileName(foto.FileName);
@@ -54,9 +77,9 @@ namespace clinicaveterinaria20.Controllers
                 db.Animale.Add(a);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            //}
-            //ViewBag.Errore = "Impossibile anagrafare l'animale";
-            //return View();
+            }
+            ViewBag.Errore = "Impossibile anagrafare l'animale";
+            return View();
         }
 
         public ActionResult Edit(int id)

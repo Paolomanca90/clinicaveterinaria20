@@ -3,7 +3,7 @@
 /* Set padding to keep content from hitting the edges */
 body, p, h1, h2, h3, h4, h5, span, a, button, div, input, label {
     font-family: 'Cairo', sans-serif;
-    color: #141461
+    color: #141461;
 }
 
 .cf {

@@ -230,10 +230,15 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\footer.css" />
+    <Content Include="Content\img\animalsilouette.jpg" />
+    <Content Include="Content\img\bird.jpg" />
+    <Content Include="Content\img\gatto.jpg" />
+    <Content Include="Content\img\husky.jpg" />
     <Content Include="Content\img\pet.svg" />
     <Content Include="Content\img\EPIC_PHARMA_ridotto.png" />
     <Content Include="Content\img\pawcare.png" />
     <Content Include="Content\img\pharmacy.svg" />
+    <Content Include="Content\img\rabbit.jpg" />
     <Content Include="Content\img\uploads\placeholder.jpg" />
     <Content Include="Content\img\uploads\vet-bg.png" />
     <Content Include="Content\img\vectra.jpg" />

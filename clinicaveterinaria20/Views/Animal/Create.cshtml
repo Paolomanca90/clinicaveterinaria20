@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
+    bool isMicrochipChecked = Model?.microchip.HasValue == true ? Model.microchip.Value : false;
 }
 
 @section styles{
@@ -64,7 +65,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.microchip, htmlAttributes: new { @class = "control-label fw-semibold" })
                         <div class="w-10 text-center">
-                            @Html.CheckBox("isMicrochipChecked", Model.microchip ?? false, new { id = "toggleCheckChip" })
+                            @Html.CheckBox("isMicrochipChecked", isMicrochipChecked, new { id = "toggleCheckChip" })
                         </div>
                     </div>
 
