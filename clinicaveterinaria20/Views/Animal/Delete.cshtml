@@ -4,126 +4,124 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2 class="p-5 fw-semibold display-4">Sei sicuro di voler rimuovere questa anagrafica?</h2>
+    <div class="w-75 mx-auto d-flex align-items-center">
+        <dl class="dl-horizontal w-50 m-0 text-center d-flex justify-content-center">
+            <div>
+                <dt class="control-label pb-2">
+                    Data registrazione
+                </dt>
 
-<h3>Sei sicuro di voler rimuovere questa anagrafica?</h3>
-<div>
-    <h4>Animale</h4>
+                <dd class="fs-5 fst-italic">
+                    @Html.DisplayFor(model => model.dataRegistrazione)
+                </dd>
 
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.dataRegistrazione)
-        </dt>
+                <dt class="control-label pb-2">
+                    Nome animale
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.dataRegistrazione)
-        </dd>
+                <dd class="fs-5 fst-italic">
+                    @Html.DisplayFor(model => model.nome)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.nome)
-        </dt>
+                <dt class="control-label pb-2">
+                    Specie
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.nome)
-        </dd>
+                <dd class="fs-5 fst-italic">
+                    @Html.DisplayFor(model => model.tipo)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tipo)
-        </dt>
+                <dt class="control-label  pb-2">
+                    Colore mantello
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tipo)
-        </dd>
+                <dd class="fs-5 fst-italic">
+                    @Html.DisplayFor(model => model.coloreMantello)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.coloreMantello)
-        </dt>
+                <dt class="control-label pb-2">
+                    Data di nascita
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.coloreMantello)
-        </dd>
+                <dd class="fs-5 fst-italic">
+                    @Html.DisplayFor(model => model.dataDinascita)
+                </dd>
+            </div>
+            <div>
+                @if (Model.microchip != false)
+                {
+                    <dt class="control-label pb-2">
+                        Microchip
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.dataDinascita)
-        </dt>
+                    <dd class="fs-5 fst-italic">
+                        @Html.DisplayFor(model => model.microchip)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.dataDinascita)
-        </dd>
+                    <dt class="control-label pb-2">
+                        Numero microchip
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.microchip)
-        </dt>
+                    <dd class="fs-5 fst-italic">
+                        @Html.DisplayFor(model => model.nmicrochip)
+                    </dd>
+                }
 
-        <dd>
-            @Html.DisplayFor(model => model.microchip)
-        </dd>
+                @if (Model.nomeProprietario != null)
+                {
+                    <dt class="control-label pb-2">
+                        Nome proprietario
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.nmicrochip)
-        </dt>
+                    <dd class="fs-5 fst-italic">
+                        @Html.DisplayFor(model => model.nomeProprietario)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.nmicrochip)
-        </dd>
+                    <dt class="control-label pb-2">
+                        Cognome proprietario
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.nomeProprietario)
-        </dt>
+                    <dd class="fs-5 fst-italic">
+                        @Html.DisplayFor(model => model.cognomeProprietario)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.nomeProprietario)
-        </dd>
+                    <dt class="control-label pb-2">
+                        Codice Fiscale
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.cognomeProprietario)
-        </dt>
+                    <dd class="fs-5 fst-italic">
+                        @Html.DisplayFor(model => model.codicefiscale)
+                    </dd>
+                }
 
-        <dd>
-            @Html.DisplayFor(model => model.cognomeProprietario)
-        </dd>
+                @if (Model.datainizioricovero != null)
+                {
+                    <dt class="control-label pb-2">
+                        @Html.DisplayNameFor(model => model.datainizioricovero)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.datainizioricovero)
-        </dt>
+                    <dd class="fs-5 fst-italic">
+                        @Html.DisplayFor(model => model.datainizioricovero)
+                    </dd>
+                }
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.datainizioricovero)
-        </dd>
+        </dl>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.datafinericovero)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.datafinericovero)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.codicefiscale)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.codicefiscale)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.foto)
-        </dt>
-
-        <dd>
-            <img src="~/Content/img/uploads/@Model.foto">
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <div class="w-50">
+                <img src="~/Content/img/uploads/@Model.foto" class="w-75 rounded-5">
+            </div>
 </div>
+
+    <div class="text-center py-5">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Elimina" class="btn btn-light rounded-pill border-0 w-25 fw-semibold p-2 fs-5 me-5" />
+                @Html.ActionLink("Annulla", "Index", null, new { @class = "btn btn-light rounded-pill border-0 w-25 fw-semibold p-2 fs-5" })
+            </div>
+        }
+    </div>

@@ -33,14 +33,16 @@ namespace clinicaveterinaria20.Controllers
             if (utente != null)
             {
                 FormsAuthentication.SetAuthCookie(u.username, false);
+                return RedirectToAction("Index");
             }
+            ViewBag.Errore = "Utente non trovato";
             return View();
         }
 
         public ActionResult logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Login");
+            return RedirectToAction("login");
         }
     }
 }
