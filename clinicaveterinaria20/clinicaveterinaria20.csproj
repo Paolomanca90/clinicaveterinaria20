@@ -237,7 +237,7 @@
     <Content Include="Content\img\pharmacy.svg" />
     <Content Include="Content\img\uploads\placeholder.jpg" />
     <Content Include="Content\img\uploads\vet-bg.png" />
-    <Content Include="Content\img\vectra.jpg" />
+    <Content Include="Content\img\uploads\vectra.jpg" />
     <Content Include="Content\img\vetimage.svg" />
     <Content Include="Content\listaAnimali.css" />
     <Content Include="Content\nav.css" />

@@ -156,6 +156,6 @@ body, p, h1, h2, h3, h4, h5, span, a, button, div, input, label {
 
 
 #div a:hover{
-    font-size:2em;
+    font-size:1.6em;
     color:#31afff;
 }

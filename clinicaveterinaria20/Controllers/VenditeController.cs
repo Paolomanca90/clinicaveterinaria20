@@ -18,6 +18,7 @@ namespace clinicaveterinaria20.Controllers
         {
             return View();
         }
+
         public List<SelectListItem> ListaProdotti
         {
             get
@@ -132,7 +133,7 @@ namespace clinicaveterinaria20.Controllers
                     prodotto.quantita += quantita - v.quantita;
                 }
                 else
-                {   
+                {
                     prodotto.quantita -= (v.quantita - quantita);
                 }
                 v.costotot = v.quantita * prodotto.costo;
@@ -192,7 +193,7 @@ namespace clinicaveterinaria20.Controllers
         public JsonResult jsnVenditeData(string pippo)
         {
             List<VetrinaPH> lista = new List<VetrinaPH>();
-            if (pippo == "")
+            if (pippo != "")
             {
                 DateTime dat = Convert.ToDateTime(pippo);
 
