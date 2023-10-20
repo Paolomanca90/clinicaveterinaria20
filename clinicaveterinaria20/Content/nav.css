@@ -310,7 +310,7 @@ p {
     --burger-menu-radius: 4em;
     position: fixed;
     top: 5vh;
-    left: 5vw;
+    right: 5vw;
     z-index: 100;
     display: block;
     width: var(--burger-menu-radius);
@@ -325,7 +325,7 @@ p {
         left: 25%;
         width: 50%;
         height: 3px;
-        background: rgba(43, 61, 79, 0.3);
+        background: rgba(255, 255, 255, 0.7);
         border-radius: 10px;
         overflow: hidden;
         transition: 0.5s;
@@ -376,7 +376,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: /*#2979FF*/ #9DC8FF;
+    background:#9DC8FF;
     opacity: 0;
     overflow-x: hidden;
     visibility: hidden;
@@ -387,6 +387,30 @@ p {
 @media screen and (max-width: 750px) {
     .menu {
         display: block;
+        padding-top: 50%;
+    }
+
+    .menu-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-nav-item {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .menu-nav-link {
+        font-size: 1.8rem;
+        padding: 10px 0;
+    }
+
+    .menu .title p {
+        font-size: 16px;
+    }
+
+    .menu .gallery {
+        display:none;
     }
 }
 

@@ -20,7 +20,7 @@
 }
 
 <p class="text-center px-5 fs-1">
-    @Html.ActionLink("Nuovo paziente", "Create", null, new { @class = "text-light text-decoration-underline" })
+    @Html.ActionLink("Nuovo paziente", "Create", null, new {@class="btn btn-light rounded-pill px-5 fs-4 border-0"})
 </p>
 
 <div class="center color1">
@@ -37,13 +37,15 @@
                             <h4>
                                 Specie: @item.tipo - Colore: @item.coloreMantello
                             </h4>
-                            @Html.ActionLink("Modifica", "Edit", new { id = item.idanimale }, new { @class = "btn apprach-btn" })
-                            @Html.ActionLink("Nuova visita", "CreateVisit", new { id = item.idanimale }, new { @class = "btn apprach-btn" })
-                            @Html.ActionLink("Cancella", "Delete", new { id = item.idanimale }, new { @class = "btn apprach-btn" })
+                            @Html.ActionLink("Modifica", "Edit", new { id = item.idanimale }, new { @class = "button apprach-btn" })
+                            @Html.ActionLink("Nuova visita", "CreateVisit", new { id = item.idanimale }, new { @class = "button apprach-btn" })
+                            @Html.ActionLink("Cancella", "Delete", new { id = item.idanimale }, new { @class = "button apprach-btn" })
                         </div>
+
                     </div>
                 </div>
             </div>
-        }
+         }
     </div>
 </div>
+
