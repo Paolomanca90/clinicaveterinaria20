@@ -48,7 +48,7 @@ namespace clinicaveterinaria20.Controllers
             if (ModelState.IsValid)
             {
                 Cliente comp = db.Cliente.FirstOrDefault(m => m.codicefiscale == cliente.codicefiscale);
-                if (comp == null)
+                if (comp == null && cliente.codicefiscale == "")
                 {
                     db.Cliente.Add(cliente);
                     db.SaveChanges();
