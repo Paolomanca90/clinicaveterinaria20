@@ -198,6 +198,10 @@
     <Compile Include="Migrations\202310201339188_ModelAnimal.designer.cs">
       <DependentUpon>202310201339188_ModelAnimal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310201452096_ModelVendita.cs" />
+    <Compile Include="Migrations\202310201452096_ModelVendita.designer.cs">
+      <DependentUpon>202310201452096_ModelVendita.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Animale.cs" />
     <Compile Include="Models\Armadietti.cs" />
@@ -419,6 +423,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310201339188_ModelAnimal.resx">
       <DependentUpon>202310201339188_ModelAnimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310201452096_ModelVendita.resx">
+      <DependentUpon>202310201452096_ModelVendita.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
