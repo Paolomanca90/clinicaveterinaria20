@@ -6,7 +6,7 @@
             url: 'magazion',
             data: { nome: impt },
             success: function (data) {
-                $("#div").empty()
+                $("#trmagazzino").empty()
                 $.each(data, function (n, e) {
                     console.log(e)
                     let p = ""
@@ -14,18 +14,77 @@
                         p = `<p> prodotto insesistente </p>`
                     }
                     else {
+                        $("#tabellaProdotti").show()
                         if (e.invendita) {
-                            if (e.quantita == 0) {
-                                p = `<p> ${e.nome} prodotto mometaneamente non presente </p>`
-                            }
-                            else {
-                                p = `<div class="d-flex align-items-center justify-content-center mt-1"> <img src="/Content/img/uploads/${e.foto}"  class="rounded-circle img-magazzino" /> <p class="mx-2"> ci sono ${e.quantita} ${e.nome} con un costo ${e.costo}€ sitati nel armadietto n${e.armadietto} nel cassetto${e.casetto} <a href="./modificaprodotto/${e.idprodotto}"> modifica prodotto</a> - <a href="./eliminaprodotto/${e.idprodotto}" > elimina dalla vendita </a> </p>
-                                        </div> `
-                            }
+                          
+                           
+
+
+                            p = ` 
+            <tr class="fst-italic fs-5">
+               
+     
+                            <td>
+      <i class="fa-solid fa-check" style="color: #305700;"></i>
+                </td>
+                <td>
+                <img src="/Content/img/uploads/${e.foto}"  class="rounded-circle img-magazzino" /> </td>
+                <td>
+       ${e.quantita}
+                </td>
+                <td>
+          ${e.nome}
+                </td>
+                <td>
+                ${e.costo}€
+                </td>
+                <td>
+                ${e.casetto}
+           
+                    modello.armadietto
+                 
+                </td>
+                <td>
+                ${e.armadietto}
+                   
+                </td>        
+                <td><a href="./modificaprodotto/${e.idprodotto}" > modifica prodotto</a> - <a href="./eliminaprodotto/${e.idprodotto}"> elimina dalla vendita</a>  </td>
+                </tr>`
+                      
                         }
-                        else { p = ` <div class="d-flex align-items-center justify-content-center mt-1"> <img src="/Content/img/uploads/${e.foto}"  class="rounded-circle img-magazzino" /> <p class="mx-2"> ${e.nome} prodotto non più in vendita <a href="./modificaprodotto/${e.idprodotto}" > modifica prodotto</a> - <a href="./eliminaprodotto/${e.idprodotto}"> rimetti in vendita</a>  </p>   </div> ` }
+                        else {
+                            p = ` 
+            <tr class="fst-italic fs-5">
+               
+     
+                            <td>
+              <i class="fa-solid fa-xmark" style="color: #ff0000;"></i>
+                </td>
+                <td>
+                <img src="/Content/img/uploads/${e.foto}"  class="rounded-circle img-magazzino" /> </td>
+                <td>
+       ${e.quantita}
+                </td>
+                <td>
+          ${e.nome}
+                </td>
+                <td>
+                ${e.costo}€
+                </td>
+                <td>
+                ${e.casetto}
+           
+                    modello.armadietto
+                 
+                </td>
+                <td>
+                ${e.armadietto}
+                   
+                </td>        
+                <td><a href="./modificaprodotto/${e.idprodotto}" > modifica prodotto</a> - <a href="./eliminaprodotto/${e.idprodotto}"> rimetti in vendita</a>  </td>
+                </tr>` }
                     }
-                    $("#div").append(p)
+                    $("#tabellaProdotti").append(p)
                 })
             }
         })
