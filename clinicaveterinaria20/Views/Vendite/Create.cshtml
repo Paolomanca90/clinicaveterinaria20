@@ -33,7 +33,18 @@
     }
 </style>
 
-@using (Html.BeginForm())
+<div>
+    @Html.ActionLink("ᐊ", "Home", null, new { @class = "btn btn-light btn-lg m-4 rounded-pill border-0" })
+</div>
+
+<h2 class="p-5 fw-semibold display-4">Nuova vendita</h2>
+
+@if (ViewBag.Errore != null)
+{
+    <p class="text-center text-danger fs-5 fst-italic p-3">@ViewBag.Errore</p>
+}
+
+@using (Html.BeginForm("Create", "Vendite", FormMethod.Post, new { @class = "w-50 mx-auto my-5" }))
 {
     @Html.AntiForgeryToken()
 
@@ -42,32 +53,31 @@
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.nricetta, htmlAttributes: new { @class = "control-label" })
-            <div class="">
-                @Html.EditorFor(model => model.nricetta, new { htmlAttributes = new { @class = "form-control inputCF", id = "createRicetta" } })
+        <div class="form-group mb-3">
+            @Html.LabelFor(model => model.nricetta, htmlAttributes: new { @class = "control-label fw-semibold pb-2" })
+            <div class="w-100">
+                @Html.EditorFor(model => model.nricetta, new { htmlAttributes = new { @class = "form-control w-100 rounded-pill p-2" } })
                 @Html.ValidationMessageFor(model => model.nricetta, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.quantita, htmlAttributes: new { @class = "control-label", })
-            <div class="">
-                @Html.EditorFor(model => model.quantita, new { htmlAttributes = new { @class = "form-control inputCF quantity", id = "createQuantita" } })
+        <div class="form-group mb-3">
+            @Html.LabelFor(model => model.quantita, htmlAttributes: new { @class = "control-label fw-semibold pb-2", })
+            <div class="w-100">
+                @Html.EditorFor(model => model.quantita, new { htmlAttributes = new { @class = "form-control w-100 rounded-pill p-2" } })
                 @Html.ValidationMessageFor(model => model.quantita, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Prodotti, htmlAttributes: new { @class = "control-label" })
-            <div>
-                @Html.DropDownListFor(model => model.idprodotto, new SelectList(ViewBag.Prodotti, "Value", "Text"), new { @class = "rounded w-50 border border-2 border-black text-center", id = "Prodotto" })
+        <div class="form-group mb-3">
+            @Html.LabelFor(model => model.Prodotti, htmlAttributes: new { @class = "control-label fw-semibold pb-2" })
+            <div class="w-100">
+                @Html.DropDownListFor(model => model.idprodotto, new SelectList(ViewBag.Prodotti, "Value", "Text"), new { @class = "form-control w-100 rounded-pill p-2" })
             </div>
         </div>
 
-        <p> @ViewBag.errore</p>
-        <div class="form-group">
-            <div class="col-md-offset-2 ">
-                <input type="submit" value="Completa vendita" class="btn btnCF " id="createVendita" />
+        <div class="form-group mt-5">
+            <div class="w-100 text-center">
+                <input type="submit" value="Completa vendita" class="btn btn-light rounded-pill border-0 w-25 fw-semibold p-2 fs-5" />
             </div>
         </div>
     </div>

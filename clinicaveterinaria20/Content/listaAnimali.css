@@ -24,13 +24,7 @@
     align-items: center;
     vertical-align: baseline;
     position: relative;
-    position: relative;
     width: 100%;
-}
-
-.colunm-3 {
-    width: 30%;
-    margin: 1%;
 }
 
 .aprroach-card {

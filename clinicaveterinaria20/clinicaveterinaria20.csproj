@@ -234,6 +234,7 @@
     <Content Include="Content\img\bird.jpg" />
     <Content Include="Content\img\gatto.jpg" />
     <Content Include="Content\img\husky.jpg" />
+    <Content Include="Content\img\Paw1.svg" />
     <Content Include="Content\img\pet.svg" />
     <Content Include="Content\img\EPIC_PHARMA_ridotto.png" />
     <Content Include="Content\img\login.png" />
