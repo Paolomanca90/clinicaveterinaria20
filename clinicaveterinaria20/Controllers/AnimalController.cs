@@ -187,11 +187,13 @@ namespace clinicaveterinaria20.Controllers
         //    return View(visiteInOrdineCronologico);
         //}
 
+        [AllowAnonymous]
         public ActionResult SearchByMNumber()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult SearchByMNumber(string nmicrochip)
         {
