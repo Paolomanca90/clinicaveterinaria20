@@ -1,7 +1,7 @@
 ﻿@model clinicaveterinaria20.Models.Vendita
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "EditVendita";
 
 }
 
@@ -11,14 +11,19 @@
     <p class="text-center text-danger fs-5 fst-italic p-3">@ViewBag.Errore</p>
 }
 
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class=" form-horizontal " >
+    <div class="form-horizontal">
 
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(model => model.idvendita)
+        @Html.HiddenFor(model => model.datavendita)
+        @Html.HiddenFor(model => model.idcliente)
 
         <div class="form-group">
             @Html.LabelFor(model => model.nricetta, htmlAttributes: new { @class = "control-label" })
@@ -45,15 +50,10 @@
         <p> @ViewBag.errore</p>
         <div class="form-group">
             <div class="col-md-offset-2 ">
-                <input type="submit" value="Completa vendita" class="btn btnCF " style="color: #1e90ff;"/>
-            </div>
+                <input type="submit" value="Modifica vendita" class="btn btnCF" />
             </div>
         </div>
-
-
     </div>
-
-     
 }
 
 @section Scripts {

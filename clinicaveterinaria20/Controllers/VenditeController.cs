@@ -24,7 +24,7 @@ namespace clinicaveterinaria20.Controllers
             {
                 List<SelectListItem> list = new List<SelectListItem>();
                 List<Prodotti> lista = new List<Prodotti>();
-                lista = db.Prodotti.Where((a) => a.quantita > 0).ToList();
+                lista = db.Prodotti.Where((a) => a.quantita > 0 && a.invendita == true).ToList();
                 foreach (Prodotti p in lista)
                 {
                     SelectListItem item = new SelectListItem { Text = $"{p.quantita} pz - {p.nome} - {p.costo:C}", Value = $"{p.idprodotto}" };
@@ -112,6 +112,51 @@ namespace clinicaveterinaria20.Controllers
             return RedirectToAction("Create");
         }
 
+        public ActionResult EditVendita(int id)
+        {
+            ViewBag.Prodotti = ListaProdotti;
+            var vendita = db.Vendita.FirstOrDefault(a => a.idvendita == id);
+            TempData["Quantita"] = vendita.quantita;
+            return View(vendita);
+        }
+
+        [HttpPost]
+        public ActionResult EditVendita(Vendita v)
+        {
+            if (ModelState.IsValid)
+            {
+                Prodotti prodotto = db.Prodotti.Find(v.idprodotto);
+                int quantita = Convert.ToInt32(TempData["Quantita"]);
+                if (quantita > v.quantita)
+                {
+                    prodotto.quantita += quantita - v.quantita;
+                }
+                else
+                {   
+                    prodotto.quantita -= (v.quantita - quantita);
+                }
+                v.costotot = v.quantita * prodotto.costo;
+                db.Entry(v).State = EntityState.Modified;
+                db.SaveChanges();
+                TempData["Successo"] = "Vendita modificata a sistema";
+                return RedirectToAction("VenditCF");
+            }
+            ViewBag.Errore = "Errore durante la procedura";
+            ViewBag.Prodotti = ListaProdotti;
+            return View();
+        }
+
+        public ActionResult DeleteVendita(int id)
+        {
+            var vendita = db.Vendita.Find(id);
+            Prodotti prodotto = db.Prodotti.Find(vendita.idprodotto);
+            prodotto.quantita += vendita.quantita;
+            db.Vendita.Remove(vendita);
+            db.SaveChanges();
+            TempData["Successo"] = "Storno effettuato con successo";
+            return RedirectToAction("VenditeCF");
+        }
+
         public ActionResult venditeCF()
         {
             return View();
@@ -125,10 +170,9 @@ namespace clinicaveterinaria20.Controllers
             List<Vendita> json = db.Vendita.Where(m => m.Cliente.codicefiscale == cf).ToList();
             if (json.Count > 0)
             {
-                VetrinaPH vetrina = new VetrinaPH();
-
                 foreach (Vendita vendita in json)
                 {
+                    VetrinaPH vetrina = new VetrinaPH();
                     vetrina.datavendita = vendita.datavendita;
                     vetrina.idvendita = vendita.idvendita;
                     vetrina.nricetta = vendita.nricetta;
@@ -155,10 +199,9 @@ namespace clinicaveterinaria20.Controllers
                 List<Vendita> json = db.Vendita.Where(m => m.datavendita == dat).ToList();
                 if (json.Count > 0)
                 {
-                    VetrinaPH vetrina = new VetrinaPH();
-
                     foreach (Vendita vendita in json)
                     {
+                        VetrinaPH vetrina = new VetrinaPH();
                         vetrina.datavendita = vendita.datavendita;
                         vetrina.idvendita = vendita.idvendita;
                         vetrina.nricetta = vendita.nricetta;
