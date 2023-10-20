@@ -3,6 +3,19 @@
 @{
     ViewBag.Title = "Index";
 }
+<style>
+    #cfindex {
+        background-color: white;
+        border-radius: 100px;
+        color: #1e90ff;
+    }
+
+    #btnindex {
+        border-radius: 100px;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+</style>
 
 <div>
     @Html.ActionLink("ᐊ", "Home", null, new { @class = "btn btn-light btn-lg m-4 rounded-pill border-0" })
@@ -21,14 +34,14 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 <div>
-                    @Html.EditorFor(model => model.codicefiscale, new { htmlAttributes = new { @class = "form-control inputCF", style= "background-color:white" } })
+                    @Html.EditorFor(model => model.codicefiscale, new { htmlAttributes = new { @class = "form-control inputCF", id = "cfindex" } })
                     @Html.ValidationMessageFor(model => model.codicefiscale, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-offset-2 ">
-                    <input type="submit" value="Prosegui" class="btn btnCF" />
+                    <input type="submit" value="Prosegui" class="btn btnCF" id="btnindex" />
                 </div>
             </div>
         </div>
@@ -37,6 +50,6 @@
 
 
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
