@@ -11,6 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace clinicaveterinaria20.Controllers
 {
+    [Authorize(Roles = "Farmacista")]
     public class magazzinoController : Controller
     {
         private Model1 database = new Model1();
