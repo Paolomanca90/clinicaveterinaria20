@@ -38,14 +38,15 @@ namespace clinicaveterinaria20.Models
         [Required(ErrorMessage = "campo richiesto")]
         [Display(Name = "Inserisci il prezzo del Prodotto")]
         public decimal? costo { get; set; }
-
+        [Display(Name = "Inserisci un cassetto")]
         public int? idcassetto { get; set; }
 
         [Required(ErrorMessage = "campo richiesto")]
+        [Display(Name = "Specifica disponibilità")]
         public bool invendita { get; set; }
-
+        [Display(Name ="Specifica Utilizzo")]
         public int? idutilizzo { get; set; }
-
+        [Display(Name = "Inserisci l'azienda")]
         public int? idbrand { get; set; }
 
         public virtual Brand Brand { get; set; }

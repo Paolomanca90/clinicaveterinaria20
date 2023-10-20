@@ -16,7 +16,7 @@
     @Html.ActionLink("ᐊ", "Index", "Animal", null, new { @class = "btn btn-light btn-lg m-4 rounded-pill border-0" })
 </div>
 
-<h2 class="p-5 fw-semibold display-4">Elenco delle visite</h2>
+<h2>Index</h2>
 
 <div class="position-relative">
     <p class="text-center px-5 fs-1">
@@ -44,32 +44,26 @@
             </th>
         </tr>
 
-        @foreach (var item in Model)
-        {
-            <tr class="fst-italic fs-5">
-                <td>
-                    @Html.DisplayFor(modelItem => item.Animale.nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.datavisita)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.esame)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.cura)
-                </td>
-                <td>
-                    <a href="~/Appointment/Edit/@item.idvisita"><i class="fa fa-edit"></i></a>
-                </td>
-                <td>
-                    <a href="~/Appointment/Delete/@item.idvisita"><i class="fa fa-trash"></i></a>
-                </td>
-            </tr>
-        }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Animale.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.datavisita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.esame)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cura)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idvisita }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idvisita })
+            </td>
+        </tr>
+    }
 
-    </table>
-    <div class="position-absolute bottom-0 opacity-25" style="z-index: -1; right: -10%;">
-        <img src="~/Content/img/stetovet.svg" alt="Alternate Text" />
-    </div>
-</div>
+</table>

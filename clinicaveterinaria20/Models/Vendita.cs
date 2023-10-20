@@ -11,16 +11,16 @@ namespace clinicaveterinaria20.Models
     {
         [Key]
         public int idvendita { get; set; }
-        [Display(Name = "Costo Totale")]
+        [Display(Name = "Costo totale")]
         public decimal? costotot { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Inserisci il numero della ricetta")]
+        [Display(Name = "Numero della ricetta")]
         public string nricetta { get; set; }
-        [Display(Name = "Inserisci la quantità")]
+        [Display(Name = "Quantità")]
 
         public int? quantita { get; set; }
-        [Display(Name = "Inserisci la data di vendita")]
+        [Display(Name = "Data di vendita")]
 
         public DateTime? datavendita { get; set; }
 

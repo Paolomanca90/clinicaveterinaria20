@@ -194,6 +194,14 @@
     <Compile Include="Migrations\202310190945225_new.designer.cs">
       <DependentUpon>202310190945225_new.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310201339188_ModelAnimal.cs" />
+    <Compile Include="Migrations\202310201339188_ModelAnimal.designer.cs">
+      <DependentUpon>202310201339188_ModelAnimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310201452096_ModelVendita.cs" />
+    <Compile Include="Migrations\202310201452096_ModelVendita.designer.cs">
+      <DependentUpon>202310201452096_ModelVendita.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Animale.cs" />
     <Compile Include="Models\Armadietti.cs" />
@@ -240,7 +248,6 @@
     <Content Include="Content\img\login.png" />
     <Content Include="Content\img\pawcare.png" />
     <Content Include="Content\img\pharmacy.svg" />
-    <Content Include="Content\img\stetovet.svg" />
     <Content Include="Content\img\rabbit.jpg" />
     <Content Include="Content\img\stetovet.svg" />
     <Content Include="Content\img\uploads\placeholder.jpg" />
@@ -414,6 +421,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310190945225_new.resx">
       <DependentUpon>202310190945225_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310201339188_ModelAnimal.resx">
+      <DependentUpon>202310201339188_ModelAnimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310201452096_ModelVendita.resx">
+      <DependentUpon>202310201452096_ModelVendita.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
