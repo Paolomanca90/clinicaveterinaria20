@@ -34,12 +34,16 @@ namespace clinicaveterinaria20.Controllers
         [HttpPost]
         public ActionResult Create(Animale a, HttpPostedFileBase foto)
         {
+            if(a.datainizioricovero != null)
+            {
+                a.nome = "animale smarrito";
+            }
             if (!a.microchip.HasValue)
             {
                 a.microchip = false;
             }
-            //if (ModelState.IsValid)
-            //{
+            if (ModelState.IsValid)
+            {
                 if (foto != null && foto.ContentLength > 0)
                 {
                     string fileName = Path.GetFileName(foto.FileName);
@@ -54,9 +58,9 @@ namespace clinicaveterinaria20.Controllers
                 db.Animale.Add(a);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            //}
-            //ViewBag.Errore = "Impossibile anagrafare l'animale";
-            //return View();
+            }
+            ViewBag.Errore = "Impossibile anagrafare l'animale";
+            return View();
         }
 
         public ActionResult Edit(int id)
