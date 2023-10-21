@@ -41,7 +41,6 @@ namespace clinicaveterinaria20.Models
         [Display(Name = "Inserisci un cassetto")]
         public int? idcassetto { get; set; }
 
-        [Required(ErrorMessage = "campo richiesto")]
         [Display(Name = "Specifica disponibilità")]
         public bool invendita { get; set; }
         [Display(Name ="Specifica Utilizzo")]

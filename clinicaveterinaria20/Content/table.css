@@ -1,0 +1,9 @@
+﻿@media screen and (max-width: 500px){
+    table tbody tr.light, table tr.light {
+        font-size: 7px !important;
+    }
+
+    table tr.light td img.img-magazzino{
+        width: 20px !important;
+    }
+}

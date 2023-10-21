@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {
     $("#btn1").click(function () {
-        $("#list-cf").show()
         let input = $("#cf").val()
         $.ajax({
             method: "POST",
@@ -11,9 +10,14 @@
                 $.each(data, function (n, e) {
                     let row = ""
                     if (e.idcliente == -1) {
-                        row = "nessuna vendita per questo cliente"
+                        $("#list-cf").show()
+                        $("#tabellaHead1").hide()
+                        row = `<p class="text-center text-danger">
+                        Nessuna vendita per questo cliente</p>`
                     }
                     else {
+                        $("#list-cf").show()
+                        $("#tabellaHead1").show()
                         row = `
                         <tr>
                             <td>
@@ -35,7 +39,7 @@
         })
     })
     $("#btn2").click(function () {
-        $("#list-data").show()
+
         let input = $("#input-data").val()
         $.ajax({
             method: "POST",
@@ -46,9 +50,14 @@
                 $.each(data, function (n, e) {
                     let row = ""
                     if (e.idcliente == -1) {
-                        row = "nessuna vendita in questa data"
+                        $("#list-data").show()
+                        $("#tabellaHead").hide()
+                        row = `<p class="text-center text-danger">
+                        Nessuna vendita in questa data</p>`
                     }
                     else {
+                        $("#list-data").show()
+                        $("#tabellaHead").show()
                         row = `
                         <tr>
                             <td>

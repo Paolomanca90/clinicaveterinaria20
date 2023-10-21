@@ -1,0 +1,6 @@
+﻿@media screen and (max-width: 500px){
+    #scelta{
+        flex-direction:column !important;
+        gap: 0.5em !important;
+    }
+}

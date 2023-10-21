@@ -11,6 +11,7 @@
             color: white !important;
         }
     </style>
+    <link href="~/Content/animal.css" rel="stylesheet" />
 }
 
 <div>
@@ -64,8 +65,8 @@
                     @Html.ValidationMessageFor(model => model.dataDinascita, "", new { @class = "text-danger" })
                 </div>
             </div>
-            <div class="d-flex justify-content-around">
-                <div style="width:calc(100%/3)">
+            <div class="d-flex" id="scelta">
+                <div class="col-12 col-lg-4">
                     <div class="form-group">
                         @Html.LabelFor(model => model.microchip, htmlAttributes: new { @class = "control-label fw-semibold" })
                         <div class="w-10 text-center">
@@ -81,7 +82,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="width:calc(100%/3)">
+                <div class="col-12 col-lg-4">
                     <div class="form-group">
                         @Html.Label("toggleCheckOwner", "Ha un proprietario", htmlAttributes: new { @class = "control-label fw-semibold" })
                         <div class="w-100 text-center">
@@ -114,7 +115,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="width:calc(100%/3)">
+                <div class="col-12 col-lg-4">
                     <div class="form-group">
                         @Html.Label("toggleCheckSmarrito", "L'animale è smarrito?", new { @class = "control-label fw-semibold" })
                         <div class="w-100 text-center">
@@ -144,7 +145,7 @@
 
             <div class="form-group my-5">
                 <div class="w-100 text-center">
-                    <input type="submit" value="Modifica" class="btn btn-light rounded-pill border-0 w-25 fw-semibold p-2 fs-5" />
+                    <input type="submit" value="Modifica" class="btn btn-light rounded-pill border-0 col-12 col-lg-3 fw-semibold p-2 fs-5" />
                 </div>
             </div>
         </div>

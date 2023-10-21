@@ -202,6 +202,18 @@
     <Compile Include="Migrations\202310201452096_ModelVendita.designer.cs">
       <DependentUpon>202310201452096_ModelVendita.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310210845590_1.cs" />
+    <Compile Include="Migrations\202310210845590_1.designer.cs">
+      <DependentUpon>202310210845590_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310210927423_2.cs" />
+    <Compile Include="Migrations\202310210927423_2.designer.cs">
+      <DependentUpon>202310210927423_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310210939365_required.cs" />
+    <Compile Include="Migrations\202310210939365_required.designer.cs">
+      <DependentUpon>202310210939365_required.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Animale.cs" />
     <Compile Include="Models\Armadietti.cs" />
@@ -221,6 +233,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\animal.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -237,6 +250,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\cf.css" />
     <Content Include="Content\footer.css" />
     <Content Include="Content\img\animalsilouette.jpg" />
     <Content Include="Content\img\bird.jpg" />
@@ -256,6 +270,7 @@
     <Content Include="Content\img\vetimage.svg" />
     <Content Include="Content\listaAnimali.css" />
     <Content Include="Content\nav.css" />
+    <Content Include="Content\table.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -427,6 +442,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310201452096_ModelVendita.resx">
       <DependentUpon>202310201452096_ModelVendita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310210845590_1.resx">
+      <DependentUpon>202310210845590_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310210927423_2.resx">
+      <DependentUpon>202310210927423_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310210939365_required.resx">
+      <DependentUpon>202310210939365_required.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

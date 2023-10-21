@@ -199,6 +199,9 @@ namespace clinicaveterinaria20.Controllers
                 TempData["Successo"] = "Prodotto aggiunto all'elenco";
                 return RedirectToAction("inserisciprodottoinmagazino");
             }
+            ViewBag.Armadietti = ListaArmadietti;
+            ViewBag.Brand = ListaBrand;
+            ViewBag.Utlizzi = ListaUtilizzi;
             ViewBag.Errore = "Errore durante la procedura";
             return View();
         }
@@ -305,6 +308,9 @@ namespace clinicaveterinaria20.Controllers
                 TempData["Successo"] = "Prodotto modificato";
                 return RedirectToAction("ModificaProdotto");
             }
+            ViewBag.Armadietti = ListaArmadietti;
+            ViewBag.Brand = ListaBrand;
+            ViewBag.Utlizzi = ListaUtilizzi;
             ViewBag.Errore = "Errore durante la procedura";
             return View();
         }

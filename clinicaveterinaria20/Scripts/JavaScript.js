@@ -6,22 +6,25 @@
             url: 'magazion',
             data: { nome: impt },
             success: function (data) {
-                $("#trmagazzino").empty()
+                $("#tabellaBody").empty()
                 $.each(data, function (n, e) {
                     console.log(e)
                     let p = ""
                     if (e.nome == "prodotto insesistente") {
-                        p = `<p> Prodotto insesistente </p>`
+                        $("#tabellaProdotti").show()
+                        $("#tabellaHead").hide()
+                        p = `<p class="text-center text-danger fst-italic light"> Prodotto inesistente </p>`
                     }
                     else {
                         $("#tabellaProdotti").show()
+                        $("#tabellaHead").show()
                         if (e.invendita) {
                           
                            
 
 
                             p = ` 
-            <tr class="fst-italic fs-5">
+            <tr class="fst-italic fs-5 light">
                
      
                             <td>
@@ -54,7 +57,7 @@
                         }
                         else {
                             p = ` 
-            <tr class="fst-italic fs-5">
+            <tr class="fst-italic fs-5 light">
                
      
                             <td>
@@ -84,7 +87,7 @@
                 <td><a href="./modificaprodotto/${e.idprodotto}" > modifica prodotto</a> - <a href="./eliminaprodotto/${e.idprodotto}"> rimetti in vendita</a>  </td>
                 </tr>` }
                     }
-                    $("#tabellaProdotti").append(p)
+                    $("#tabellaBody").append(p)
                 })
             }
         })
