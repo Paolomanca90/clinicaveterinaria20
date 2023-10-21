@@ -244,9 +244,9 @@ article a {
 /*Navbar*/
 
 body {
-    display: flex;
+/*    display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;*/
     min-height: 100vh;
     margin: 0;
     font-family: Lora, sans-serif;
